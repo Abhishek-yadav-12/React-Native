@@ -1,3 +1,5 @@
+// The main entry point of the javascript file. Inside which the components get registered and the app gets started.
+
 /**
  * @format
  */
