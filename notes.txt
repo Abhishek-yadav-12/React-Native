@@ -1,0 +1,9 @@
+- Framework to develop android and ios apps
+- written in js and react js
+- it will convert code to native apps
+- initial release date 26th march 2015
+- maintained by facebook
+
+react js is a library and react native is a framework
+
+jsx is just the javascript file with an additional feature writing html in the same file and jsx does not have any official full form but it is widely known as JavaScript XML or JavaScript Extension
