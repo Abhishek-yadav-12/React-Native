@@ -7,3 +7,12 @@
 react js is a library and react native is a framework
 
 jsx is just the javascript file with an additional feature writing html in the same file and jsx does not have any official full form but it is widely known as JavaScript XML or JavaScript Extension
+
+we cannot make a function after we've written return statement in a function in js and react js
+
+Components are reusable UI elements in react js and react native and they are the building blocks of the app 
+
+Components are similar as function but in function we cannot create html elements but in components we can create html elements and we can also use state and props in components
+two types of components - functional and class based but class based not really used nowadays
+we mainly use functional components nowadays
+

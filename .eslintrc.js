@@ -27,3 +27,4 @@ module.exports = {
 // Package.json file contains all the information about the project while Package-lock.json file contains the information about the dependencies of the project.
 
 // The watchman file will only detect the changes made in the projet while metro file will implement and reload the file.
+
