@@ -6,6 +6,8 @@
 
 react js is a library and react native is a framework
 
+npx react-native run-android - command to run the native project
+
 jsx is just the javascript file with an additional feature writing html in the same file and jsx does not have any official full form but it is widely known as JavaScript XML or JavaScript Extension
 
 we cannot make a function after we've written return statement in a function in js and react js
@@ -16,3 +18,8 @@ Components are similar as function but in function we cannot create html element
 two types of components - functional and class based but class based not really used nowadays
 we mainly use functional components nowadays
 
+State is a feature of react js which holds the information inside the components
+
+Whenever we update the state then the component rerenders while in variables change, the component does not re render.
+
+A state cannot be used outside the component
