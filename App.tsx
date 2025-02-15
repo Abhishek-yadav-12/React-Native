@@ -37,38 +37,55 @@
 
 // export default App;
 
-import React, {useState} from 'react';
-import {Button, Text, View} from 'react-native';
-import external from './style';
+// import React, {useState} from 'react';
+// import {Button, Text, View} from 'react-native';
+// import external from './style';
+
+// const App = () => {
+//   const [name, setName] = useState('Abhi');
+
+//   const changeName = () => {
+//     if(name == 'Abhi'){
+//       setName('Zen');
+//     }
+//     else{
+//       setName('Abhi');
+//     }
+//   }
+//   return (
+//     <View>
+//       <Text>{name}</Text>
+//       <Button title="Change Name" onPress={changeName}></Button>
+//       <Text style={styles.textBox}>This is using a internal styling!! </Text>
+//       <Text style={{fontStyle: 'italic', backgroundColor: 'yellow'}}>This is using inline styling</Text>
+//       <Text style={external.textBox}>This is using external styling!!</Text>
+//     </View>
+//   );
+// };
+
+// const styles = {
+//   textBox: {
+//     fontSize: 20,
+//     color: 'white',
+//     backgroundColor: 'red'
+//   }
+// }
+
+// export default App;
+
+import React, {useState} from "react";
+import { View, Text, Button, TextInput } from "react-native";
 
 const App = () => {
-  const [name, setName] = useState('Abhi');
 
-  const changeName = () => {
-    if(name == 'Abhi'){
-      setName('Zen');
-    }
-    else{
-      setName('Abhi');
-    }
-  }
+  const [name, setName] = useState('');
   return (
     <View>
-      <Text>{name}</Text>
-      <Button title="Change Name" onPress={changeName}></Button>
-      <Text style={styles.textBox}>This is using a internal styling!! </Text>
-      <Text style={{fontStyle: 'italic', backgroundColor: 'yellow'}}>This is using inline styling</Text>
-      <Text style={external.textBox}>This is using external styling!!</Text>
+      <Text>Your name is: {name}</Text>
+      <TextInput style={{borderColor: 'blue', borderWidth: 2}} onChangeText={(name)=>(setName(name))} placeholder="Enter your name" value={name}/>
+      <Button onPress={()=> {setName('')}} title="clear" />
     </View>
   );
 };
-
-const styles = {
-  textBox: {
-    fontSize: 20,
-    color: 'white',
-    backgroundColor: 'red'
-  }
-}
 
 export default App;
