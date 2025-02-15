@@ -23,3 +23,8 @@ State is a feature of react js which holds the information inside the components
 Whenever we update the state then the component rerenders while in variables change, the component does not re render.
 
 A state cannot be used outside the component
+we can never share the data of a state but for the prop we can
+
+With the help of props we can share the data from one component to another component
+aka arguments parameter 
+We can also pass the data from child to parent component using props

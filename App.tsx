@@ -39,19 +39,36 @@
 
 import React, {useState} from 'react';
 import {Button, Text, View} from 'react-native';
+import external from './style';
 
 const App = () => {
   const [name, setName] = useState('Abhi');
 
   const changeName = () => {
-    setName('Zen');
+    if(name == 'Abhi'){
+      setName('Zen');
+    }
+    else{
+      setName('Abhi');
+    }
   }
   return (
     <View>
       <Text>{name}</Text>
       <Button title="Change Name" onPress={changeName}></Button>
+      <Text style={styles.textBox}>This is using a internal styling!! </Text>
+      <Text style={{fontStyle: 'italic', backgroundColor: 'yellow'}}>This is using inline styling</Text>
+      <Text style={external.textBox}>This is using external styling!!</Text>
     </View>
   );
 };
+
+const styles = {
+  textBox: {
+    fontSize: 20,
+    color: 'white',
+    backgroundColor: 'red'
+  }
+}
 
 export default App;
