@@ -37,6 +37,8 @@
 
 // export default App;
 
+// ***********************************************************************************************************************
+
 // import React, {useState} from 'react';
 // import {Button, Text, View} from 'react-native';
 // import external from './style';
@@ -73,19 +75,112 @@
 
 // export default App;
 
-import React, {useState} from "react";
-import { View, Text, Button, TextInput } from "react-native";
+// ***********************************************************************************************************************
+
+// import React, {useState} from "react";
+// import { View, Text, Button, TextInput } from "react-native";
+
+// const App = () => {
+
+//   const [name, setName] = useState('');
+//   return (
+//     <View>
+//       <Text>Your name is: {name}</Text>
+//       <TextInput style={{borderColor: 'blue', borderWidth: 2}} onChangeText={(name)=>(setName(name))} placeholder="Enter your name" value={name}/>
+//       <Button onPress={()=> {setName('')}} title="clear" />
+//     </View>
+//   );
+// };
+
+// export default App;
+
+// ***********************************************************************************************************************
+
+// Form Handling
+
+// import React, { useState } from "react";
+// import { Button, Text, TextInput, View} from "react-native";
+
+// const App = () =>{
+
+//   const [pass, setPass] = useState('');
+//   const [display, setDisplay] = useState(false);
+
+//   return(
+//     <View>
+//     <TextInput
+//     secureTextEntry={true}
+//     placeholder="Enter your Password"
+//     style={{borderRadius: 2,
+//       borderColor: 'blue',
+//       borderWidth: 2,
+//       margin: 10,
+//       padding: 3
+//     }}>
+//     </TextInput>
+//     <View style={{marginBottom:4}}><Button title="Show Details"
+//      onPress={()=>{setDisplay(true)}}/>
+//     </View>
+//     <Button title="Clear Details" />
+//     <View>{
+//       display ? <View><Text>{pass}</Text></View> : null
+//       }
+//     </View>
+//     </View>
+
+//   )
+
+// }
+
+// export default App;
+
+// *******************************************************************************************
+
+// Flatlist
+
+import React from 'react';
+import {FlatList, StyleSheet, Text, View} from 'react-native';
 
 const App = () => {
+  const users = [
+    {
+      id: 1,
+      name: 'Abhi',
+    },
+    {
+      id: 2,
+      name: 'Zen',
+    },
+    {
+      id: 3,
+      name: 'Eren',
+    },
+    {
+      id: 4,
+      name: 'Pam',
+    },
+  ];
 
-  const [name, setName] = useState('');
   return (
     <View>
-      <Text>Your name is: {name}</Text>
-      <TextInput style={{borderColor: 'blue', borderWidth: 2}} onChangeText={(name)=>(setName(name))} placeholder="Enter your name" value={name}/>
-      <Button onPress={()=> {setName('')}} title="clear" />
+      <Text>Flatlist</Text>
+      <FlatList
+        data={users}
+        renderItem={({item}) => <Text style={styles.container}>{item.name}</Text>}
+        keyExtractor={item => item.id.toString()}
+      />
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: 'lightgray',
+    alignItems: 'center',
+    justifyContent: 'center',
+    textAlign: 'center',
+  },
+})
 
 export default App;
