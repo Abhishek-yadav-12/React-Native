@@ -28,3 +28,7 @@ we can never share the data of a state but for the prop we can
 With the help of props we can share the data from one component to another component
 aka arguments parameter 
 We can also pass the data from child to parent component using props
+
+Flatlist - To create or use lists in React native we use Flatlist and it can be an array or an array of objects as well
+
+Map function is used to create custom list 

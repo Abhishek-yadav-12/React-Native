@@ -136,51 +136,107 @@
 
 // *******************************************************************************************
 
-// Flatlist
+// Flatlist & Map
 
-import React from 'react';
-import {FlatList, StyleSheet, Text, View} from 'react-native';
+// import React from 'react';
+// import {FlatList, StyleSheet, Text, View} from 'react-native';
+// import external from './style';
 
+// const App = () => {
+//   const users = [
+//     {
+//       id: 1,
+//       name: 'Abhi',
+//     },
+//     {
+//       id: 2,
+//       name: 'Zen',
+//     },
+//     {
+//       id: 3,
+//       name: 'Eren',
+//     },
+//     {
+//       id: 4,
+//       name: 'Pam',
+//     },
+//   ];
+
+//   return (
+//     <View>
+//       {/* <Text>Flatlist</Text>
+//       <FlatList
+//         data={users}
+//         renderItem={({item}) => <Text style={external.container}>{item.name}</Text>}
+//         keyExtractor={item => item.id.toString()}
+//       /> */}
+
+//       <Text>Map</Text>
+//       {users.map((user) => (
+//         <Text>{user.name}</Text>
+//       ))}
+//     </View>
+//   );
+// };
+
+// export default App;
+
+
+// *******************************************************************************************
+
+// Dynamic Grid using map function and styles
+
+import React from "react";
+import { Text, View } from "react-native";
+import external from "./style";
+ 
 const App = () => {
+
   const users = [
-    {
-      id: 1,
-      name: 'Abhi',
-    },
-    {
-      id: 2,
-      name: 'Zen',
-    },
-    {
-      id: 3,
-      name: 'Eren',
-    },
-    {
-      id: 4,
-      name: 'Pam',
-    },
-  ];
+        {
+          id: 1,
+          name: 'Abhi',
+        },
+        {
+          id: 2,
+          name: 'Zen',
+        },
+        {
+          id: 3,
+          name: 'Eren',
+        },
+        {
+          id: 4,
+          name: 'Pam',
+        },
+        {
+          id: 1,
+          name: 'Abhi',
+        },
+        {
+          id: 2,
+          name: 'Zen',
+        },
+        {
+          id: 3,
+          name: 'Eren',
+        },
+        {
+          id: 4,
+          name: 'Pam',
+        },
+      ];
 
-  return (
-    <View>
-      <Text>Flatlist</Text>
-      <FlatList
-        data={users}
-        renderItem={({item}) => <Text style={styles.container}>{item.name}</Text>}
-        keyExtractor={item => item.id.toString()}
-      />
+
+  return(
+    <View style= {{flex: 1,
+    flexWrap: 'wrap',
+    flexDirection: 'row'}}>
+      {
+        users.map((user)=>(<Text style={external.grid}>{user.name}</Text>))
+      }
     </View>
-  );
-};
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: 'lightgray',
-    alignItems: 'center',
-    justifyContent: 'center',
-    textAlign: 'center',
-  },
-})
+  )
+}
 
 export default App;
