@@ -186,57 +186,59 @@
 
 // Dynamic Grid using map function and styles
 
-import React from "react";
-import { Text, View } from "react-native";
-import external from "./style";
+// import React from "react";
+// import { ScrollView, Text, View } from "react-native";
+// import external from "./style";
  
-const App = () => {
+// const App = () => {
 
-  const users = [
-        {
-          id: 1,
-          name: 'Abhi',
-        },
-        {
-          id: 2,
-          name: 'Zen',
-        },
-        {
-          id: 3,
-          name: 'Eren',
-        },
-        {
-          id: 4,
-          name: 'Pam',
-        },
-        {
-          id: 1,
-          name: 'Abhi',
-        },
-        {
-          id: 2,
-          name: 'Zen',
-        },
-        {
-          id: 3,
-          name: 'Eren',
-        },
-        {
-          id: 4,
-          name: 'Pam',
-        },
-      ];
+//   const users = [
+//         {
+//           id: 1,
+//           name: 'Abhi',
+//         },
+//         {
+//           id: 2,
+//           name: 'Zen',
+//         },
+//         {
+//           id: 3,
+//           name: 'Eren',
+//         },
+//         {
+//           id: 4,
+//           name: 'Pam',
+//         },
+//         {
+//           id: 5,
+//           name: 'Abhi',
+//         },
+//         {
+//           id: 6,
+//           name: 'Zen',
+//         },
+//         {
+//           id: 7,
+//           name: 'Eren',
+//         },
+//         {
+//           id: 8,
+//           name: 'Pam',
+//         },
+//       ];
 
 
-  return(
-    <View style= {{flex: 1,
-    flexWrap: 'wrap',
-    flexDirection: 'row'}}>
-      {
-        users.map((user)=>(<Text style={external.grid}>{user.name}</Text>))
-      }
-    </View>
-  )
-}
+//   return(
+//     <View style= {{flex: 1,
+    
+//     flexDirection: 'row'}}>
+//       <ScrollView style={{backgroundColor: 'skyblue'}}>
+//       {
+//         users.map((user)=>(<Text style={external.grid}>{user.name}</Text>))
+//       }
+//       </ScrollView>
+//     </View>
+//   )
+// }
 
-export default App;
+// export default App;
