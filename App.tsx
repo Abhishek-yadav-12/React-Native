@@ -243,58 +243,117 @@
 
 // ************************************************************************************************
 
+// Components and Props
+
+// import React from 'react';
+// import {View, Text, FlatList, StyleSheet} from 'react-native';
+
+// const App = () => {
+//   const users = [
+//     {id: 1, name: 'John Doe', email: 'john.doe@email.com'},
+//     {id: 2, name: 'Jane Smith', email: 'jane.smith@email.com'},
+//     {id: 3, name: 'Alice Johnson', email: 'alice.johnson@email.com'},
+//     {id: 4, name: 'Bob Brown', email: 'bob.brown@email.com'},
+//     {id: 5, name: 'Emily Davis', email: 'emily.davis@email.com'},
+//   ];
+
+//   return (
+//     <View>
+//       <Text style={{fontSize: 20}}>Component in Loops</Text>
+//       <FlatList
+//         data={users}
+//         renderItem={({item}) => <UserData item={item} />}
+//       />
+//     </View>
+//   );
+// };
+
+// const UserData = (props) => {
+//   const item = props.item;
+//   return (
+//     <View style={styles.box}>
+//       <Text style={styles.item}>{item.name}</Text>
+//       <Text style={styles.item}>{item.email}</Text>
+//     </View>
+//   );
+// };
+
+// const styles = StyleSheet.create({
+//   item: {
+//     backgroundColor: 'skyblue',
+//     padding: 10,
+//     fontSize: 20,
+//     flex: 1,
+//     textAlign: 'center',
+//     margin: 2,
+//   },
+//   box: {
+//     backgroundColor: 'lightgreen',
+//     padding: 10,
+//     flexDirection: 'row',
+//     alignItems: 'center',
+//     marginBottom: 2,
+//     borderWidth: 2,
+//     borderColor: 'white',
+//   },
+// });
+
+// export default App;
+
+
+// **********************************************************************************
+
+// Section List - If we have nested arrays, then we use section list to display the data in the array.
+
 import React from 'react';
-import {View, Text, FlatList, StyleSheet} from 'react-native';
+import {SectionList, Text, View} from 'react-native';
 
 const App = () => {
-  const users = [
-    {id: 1, name: 'John Doe', email: 'john.doe@email.com'},
-    {id: 2, name: 'Jane Smith', email: 'jane.smith@email.com'},
-    {id: 3, name: 'Alice Johnson', email: 'alice.johnson@email.com'},
-    {id: 4, name: 'Bob Brown', email: 'bob.brown@email.com'},
-    {id: 5, name: 'Emily Davis', email: 'emily.davis@email.com'},
+
+  const usersData = [
+    {
+      id: '1',
+      name: 'Alice Johnson',
+      data: ['JavaScript', 'React Native', 'TypeScript'],
+    },
+    {
+      id: '2',
+      name: 'Bob Brown',
+      data: ['Python', 'Django', 'Machine Learning'],
+    },
+    {
+      id: '3',
+      name: 'Charlie Smith',
+      data: ['Java', 'Spring Boot', 'Microservices'],
+    },
+    {
+      id: '4',
+      name: 'David Lee',
+      data: ['C++', 'Data Structures', 'Algorithms'],
+    },
+    {
+      id: '5',
+      name: 'Eve Adams',
+      data: ['Swift', 'iOS Development', 'UI/UX'],
+    },
   ];
+  
+
 
   return (
     <View>
-      <Text style={{fontSize: 20}}>Component in Loops</Text>
-      <FlatList
-        data={users}
-        renderItem={({item}) => <UserData item={item} />}
+      <Text style={{fontSize: 31, margin: 'auto'}}>Section List</Text>
+      <SectionList 
+      sections={usersData}
+      renderItem={({item})=><Text style={{fontSize: 20, marginLeft: 20}}>{item}</Text>}
+      renderSectionHeader={({section: {name}})=>
+       ( <Text style={{fontSize: 25, color: 'blue'}}>
+          {name}
+        </Text>
+  )}
       />
     </View>
   );
 };
-
-
-const UserData = (props) => {
-  const item = props.item;
-  return (
-    <View style={styles.box}>
-      <Text style={styles.item}>{item.name}</Text>
-      <Text style={styles.item}>{item.email}</Text>
-    </View>
-  );
-};
-
-const styles = StyleSheet.create({
-  item: {
-    backgroundColor: 'skyblue',
-    padding: 10,
-    fontSize: 20,
-    flex: 1,
-    textAlign: 'center',
-    margin: 2,
-  },
-  box: {
-    backgroundColor: 'lightgreen',
-    padding: 10,
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: 2,
-    borderWidth: 2,
-    borderColor: 'white',
-  },
-});
 
 export default App;

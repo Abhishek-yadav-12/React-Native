@@ -32,4 +32,10 @@ We can also pass the data from child to parent component using props
 Flatlist - To create or use lists in React native we use Flatlist and it can be an array or an array of objects as well
 Flatlist always use two paramets that is data and renderitem
 
+We can pass mutliple props in components
+
 Map function is used to create custom list 
+
+Section list - We can only use data key as the second array in the nested condition and not anything else for now according to the official documentation.
+
+
