@@ -181,7 +181,6 @@
 
 // export default App;
 
-
 // *******************************************************************************************
 
 // Dynamic Grid using map function and styles
@@ -189,7 +188,7 @@
 // import React from "react";
 // import { ScrollView, Text, View } from "react-native";
 // import external from "./style";
- 
+
 // const App = () => {
 
 //   const users = [
@@ -211,26 +210,25 @@
 //         },
 //         {
 //           id: 5,
-//           name: 'Abhi',
+//           name: 'Sam',
 //         },
 //         {
 //           id: 6,
-//           name: 'Zen',
+//           name: 'Ram',
 //         },
 //         {
 //           id: 7,
-//           name: 'Eren',
+//           name: 'Han',
 //         },
 //         {
 //           id: 8,
-//           name: 'Pam',
+//           name: 'Dan',
 //         },
 //       ];
 
-
 //   return(
 //     <View style= {{flex: 1,
-    
+
 //     flexDirection: 'row'}}>
 //       <ScrollView style={{backgroundColor: 'skyblue'}}>
 //       {
@@ -242,3 +240,61 @@
 // }
 
 // export default App;
+
+// ************************************************************************************************
+
+import React from 'react';
+import {View, Text, FlatList, StyleSheet} from 'react-native';
+
+const App = () => {
+  const users = [
+    {id: 1, name: 'John Doe', email: 'john.doe@email.com'},
+    {id: 2, name: 'Jane Smith', email: 'jane.smith@email.com'},
+    {id: 3, name: 'Alice Johnson', email: 'alice.johnson@email.com'},
+    {id: 4, name: 'Bob Brown', email: 'bob.brown@email.com'},
+    {id: 5, name: 'Emily Davis', email: 'emily.davis@email.com'},
+  ];
+
+  return (
+    <View>
+      <Text style={{fontSize: 20}}>Component in Loops</Text>
+      <FlatList
+        data={users}
+        renderItem={({item}) => <UserData item={item} />}
+      />
+    </View>
+  );
+};
+
+
+const UserData = (props) => {
+  const item = props.item;
+  return (
+    <View style={styles.box}>
+      <Text style={styles.item}>{item.name}</Text>
+      <Text style={styles.item}>{item.email}</Text>
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  item: {
+    backgroundColor: 'skyblue',
+    padding: 10,
+    fontSize: 20,
+    flex: 1,
+    textAlign: 'center',
+    margin: 2,
+  },
+  box: {
+    backgroundColor: 'lightgreen',
+    padding: 10,
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 2,
+    borderWidth: 2,
+    borderColor: 'white',
+  },
+});
+
+export default App;

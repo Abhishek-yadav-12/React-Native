@@ -20,8 +20,8 @@ const external = StyleSheet.create({
         padding: 5,
         textAlign: 'center',
         textAlignVertical: 'center',
-        height: 300,
-        width: 300,
+        height: 150,
+        width: 150,
         fontSize: 25,
           }
 });
