@@ -388,43 +388,50 @@
 // ************************************************************************************************
 
 // State and Props in Class Component
+// setState is a default function available in the class component to change the state of the component
 
-import React, { Component} from 'react';
-import {View, Text, Button, TextInput} from 'react-native';
-import Info from './components/info'
+// import React, { Component} from 'react';
+// import {View, Text, Button, TextInput} from 'react-native';
+// import Info from './components/info';
+// import Student from './components/Student';
 
-interface AppState { // This interface and type annotations are used because we are using typescript and not javascript
-  name: string;
-  age: number;
-}
+// interface AppState { // This interface and type annotations are used because we are using typescript and not javascript
+//   name: string;
+//   age: number;
+// }
 
-class App extends Component<{}, AppState> {  // This can also be written as class App extends React.component without using the import of Component in React
-  // To call the constructor of the parent class we use Super keyword as super()
-    constructor(props: any){
-    super(props);
-    this.state = {
-      name: "Abhishek Yadav",
-      age: 21,
-    }
-  }
+// class App extends Component<{}, AppState> {  // This can also be written as class App extends React.component without using the import of Component in React
+//   // To call the constructor of the parent class we use Super keyword as super()
+//     constructor(props: any){
+//     super(props);
+//     this.state = {
+//       name: "Abhishek Yadav",
+//       age: 21,
+//     }
+//   }
 
-  Abhi = () => {
-    console.warn("Good Luck!");
-  }
+//   Abhi = () => {
+//     console.warn("Good Luck!");
+//   }
 
-  render(){
-    return(
-      <View>
-        <Text style={{fontSize:21, color: 'red'}}>This is a class component in React-Native</Text>
-        <Text style={{fontSize:21, color: 'red'}}>{this.state.name}</Text>
-        <Text style={{fontSize:21, color: 'red'}}>{this.state.age}</Text>
-        <Button title='Press Here' />
-        <Info />
-        <TextInput placeholder='Enter Details' />
-        <Button title='Click for Surprise!' onPress={this.Abhi} />
-      </View>
-    )
-  }
-}
+//   update = (text: string) => {
+//     this.setState({name: text})
+//   }
 
-export default App;
+//   render(){
+//     return(
+//       <View>
+//         <Text style={{fontSize:21, color: 'red'}}>This is a class component in React-Native</Text>
+//         <Text style={{fontSize:21, color: 'red'}}>{this.state.name}</Text>
+//         <Text style={{fontSize:21, color: 'red'}}>{this.state.age}</Text>
+//         {/* <Button title='Press Here' /> */}
+//         <Info />
+//         <Student name={this.state.name} />
+//         <TextInput style={{borderColor:'black', borderWidth: 2, margin: 5}} placeholder='Enter Details' onChangeText={(name)=>this.update(name)} />
+//         <Button title='Click for Surprise!' onPress={this.Abhi} />
+//       </View>
+//     )
+//   }
+// }
+
+// export default App;
