@@ -357,7 +357,7 @@
 
 // ************************************************************************************************
 
-// Class Component
+// Class Component - to call a function available inside the class, we use this keyword as this.functionName 
 
 // import React, { Component} from 'react';
 // import {View, Text, Button, TextInput} from 'react-native';
@@ -383,3 +383,48 @@
 // }
 
 // export default App;
+
+
+// ************************************************************************************************
+
+// State and Props in Class Component
+
+import React, { Component} from 'react';
+import {View, Text, Button, TextInput} from 'react-native';
+import Info from './components/info'
+
+interface AppState { // This interface and type annotations are used because we are using typescript and not javascript
+  name: string;
+  age: number;
+}
+
+class App extends Component<{}, AppState> {  // This can also be written as class App extends React.component without using the import of Component in React
+  // To call the constructor of the parent class we use Super keyword as super()
+    constructor(props: any){
+    super(props);
+    this.state = {
+      name: "Abhishek Yadav",
+      age: 21,
+    }
+  }
+
+  Abhi = () => {
+    console.warn("Good Luck!");
+  }
+
+  render(){
+    return(
+      <View>
+        <Text style={{fontSize:21, color: 'red'}}>This is a class component in React-Native</Text>
+        <Text style={{fontSize:21, color: 'red'}}>{this.state.name}</Text>
+        <Text style={{fontSize:21, color: 'red'}}>{this.state.age}</Text>
+        <Button title='Press Here' />
+        <Info />
+        <TextInput placeholder='Enter Details' />
+        <Button title='Click for Surprise!' onPress={this.Abhi} />
+      </View>
+    )
+  }
+}
+
+export default App;
