@@ -357,14 +357,14 @@
 
 // ************************************************************************************************
 
-// Class Component - to call a function available inside the class, we use this keyword as this.functionName 
+// Class Component - to call a function available inside the class, we use this keyword as this.functionName
 
 // import React, { Component} from 'react';
 // import {View, Text, Button, TextInput} from 'react-native';
 // import Info from './components/info'
 
 // class App extends Component{  // This can also be written as class App extends React.component without using the import of Component in React
-  
+
 //   Abhi = () => {
 //     console.warn("Good Luck!");
 //   }
@@ -383,7 +383,6 @@
 // }
 
 // export default App;
-
 
 // ************************************************************************************************
 
@@ -435,3 +434,25 @@
 // }
 
 // export default App;
+
+// ************************************************************************************************
+
+// Lifecycle Methods in Class Component
+// 1. Mounting -  When we call the function for the first time
+// 2. Updating - When we update the state of the component
+// 3. Unmounting - When we remove the component from the screen
+// We can use life cycle methods in functional components using useEffect hook
+ 
+
+import React from 'react';
+import {View, Text} from 'react-native';
+
+const App = () => {
+  return (
+    <View>
+      <Text style={{fontSize: 21, color: 'red'}}>Life Cycle Methods</Text>
+    </View>
+  );
+};
+
+export default App;
