@@ -300,60 +300,86 @@
 
 // export default App;
 
-
 // **********************************************************************************
 
 // Section List - If we have nested arrays, then we use section list to display the data in the array.
 
-import React from 'react';
-import {SectionList, Text, View} from 'react-native';
+// import React from 'react';
+// import {SectionList, Text, View} from 'react-native';
 
-const App = () => {
+// const App = () => {
 
-  const usersData = [
-    {
-      id: '1',
-      name: 'Alice Johnson',
-      data: ['JavaScript', 'React Native', 'TypeScript'],
-    },
-    {
-      id: '2',
-      name: 'Bob Brown',
-      data: ['Python', 'Django', 'Machine Learning'],
-    },
-    {
-      id: '3',
-      name: 'Charlie Smith',
-      data: ['Java', 'Spring Boot', 'Microservices'],
-    },
-    {
-      id: '4',
-      name: 'David Lee',
-      data: ['C++', 'Data Structures', 'Algorithms'],
-    },
-    {
-      id: '5',
-      name: 'Eve Adams',
-      data: ['Swift', 'iOS Development', 'UI/UX'],
-    },
-  ];
+//   const usersData = [
+//     {
+//       id: '1',
+//       name: 'Alice Johnson',
+//       data: ['JavaScript', 'React Native', 'TypeScript'],
+//     },
+//     {
+//       id: '2',
+//       name: 'Bob Brown',
+//       data: ['Python', 'Django', 'Machine Learning'],
+//     },
+//     {
+//       id: '3',
+//       name: 'Charlie Smith',
+//       data: ['Java', 'Spring Boot', 'Microservices'],
+//     },
+//     {
+//       id: '4',
+//       name: 'David Lee',
+//       data: ['C++', 'Data Structures', 'Algorithms'],
+//     },
+//     {
+//       id: '5',
+//       name: 'Eve Adams',
+//       data: ['Swift', 'iOS Development', 'UI/UX'],
+//     },
+//   ];
+
+//   return (
+//     <View>
+//       <Text style={{fontSize: 31, margin: 'auto'}}>Section List</Text>
+//       <SectionList
+//       sections={usersData}
+//       renderItem={({item})=><Text style={{fontSize: 20, marginLeft: 20}}>{item}</Text>}
+//       renderSectionHeader={({section: {name}})=>
+//        ( <Text style={{fontSize: 25, color: 'blue'}}>
+//           {name}
+//         </Text>
+//   )}
+//       />
+//     </View>
+//   );
+// };
+
+// export default App;
+
+// ************************************************************************************************
+
+// Class Component
+
+// import React, { Component} from 'react';
+// import {View, Text, Button, TextInput} from 'react-native';
+// import Info from './components/info'
+
+// class App extends Component{  // This can also be written as class App extends React.component without using the import of Component in React
   
+//   Abhi = () => {
+//     console.warn("Good Luck!");
+//   }
 
+//   render(){
+//     return(
+//       <View>
+//         <Text style={{fontSize:21, color: 'red'}}>This is a class component in React-Native</Text>
+//         <Button title='Press Here' />
+//         <Info />
+//         <TextInput placeholder='Enter Details' />
+//         <Button title='Click for Surprise!' onPress={this.Abhi} />
+//       </View>
+//     )
+//   }
+// }
 
-  return (
-    <View>
-      <Text style={{fontSize: 31, margin: 'auto'}}>Section List</Text>
-      <SectionList 
-      sections={usersData}
-      renderItem={({item})=><Text style={{fontSize: 20, marginLeft: 20}}>{item}</Text>}
-      renderSectionHeader={({section: {name}})=>
-       ( <Text style={{fontSize: 25, color: 'blue'}}>
-          {name}
-        </Text>
-  )}
-      />
-    </View>
-  );
-};
-
-export default App;
+// export default App;

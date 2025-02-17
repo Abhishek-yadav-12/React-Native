@@ -6,10 +6,10 @@ const Info = () => {
   var email = 'abhi@gmail.com'; 
   
 
-  return (<View>
-    <Text style={{fontSize: 30}}> {name}</Text>
-    <Text style={{fontSize: 30}}> {age}</Text>
-    <Text style={{fontSize: 30}}> {email}</Text>
+  return (<View style={{backgroundColor: 'yellow'}}>
+    <Text style={{fontSize: 20}}> {name}</Text>
+    <Text style={{fontSize: 20}}> {age}</Text>
+    <Text style={{fontSize: 20}}> {email}</Text>
   </View>)
 };
 
