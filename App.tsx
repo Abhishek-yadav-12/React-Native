@@ -600,33 +600,62 @@
 //     margin:5
 //   },
 
-
 // })
 
 // export default App;
 
 // Default button in react native does not support much of the styling, so we can use TouchableHiglights or TouchableOpacity to style the button
 
-import React from "react";
-import { View, Text, TouchableHighlight, StyleSheet, TouchableOpacity } from "react-native";
+import React, {useState} from 'react';
+import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 
-const App =() => {
-  return(
-    <View>
-      <TouchableOpacity>
+const App = () => {
+  const [radio, setRadio] = useState(1);
+
+  return (
+    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+      {/* <TouchableOpacity>
         <Text style={[styles.Button, styles.Success]}>Success</Text>
+      </TouchableOpacity>
+      <TouchableOpacity>
         <Text style={[styles.Button, styles.Primary]}>Primary</Text>
+      </TouchableOpacity>
+      <TouchableOpacity>
         <Text style={[styles.Button, styles.Warning]}>Warning</Text>
+      </TouchableOpacity>
+      <TouchableOpacity>
         <Text style={[styles.Button, styles.Error]}>Error</Text>
+      </TouchableOpacity>
+      <TouchableOpacity>
         <Text style={styles.Button}>Button</Text>
+      </TouchableOpacity> */}
+
+      {/****************************Radio Buttons************************ */}
+
+      <TouchableOpacity onPress={() => setRadio(1)}>
+        <View style={styles.radioWrapper}>
+          <View style={styles.radio}>
+            {radio === 1 ? <View style={styles.radioBg}></View> : null}
+          </View>
+
+          <Text style={styles.radioText}>Radio 1</Text>
+        </View>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={() => setRadio(2)}>
+        <View style={styles.radioWrapper}>
+          <View style={styles.radio}>
+            {radio === 2 ? <View style={styles.radioBg}></View> : null}
+          </View>
+
+          <Text style={styles.radioText}>Radio 2</Text>
+        </View>
       </TouchableOpacity>
     </View>
-  )
-}
+  );
+};
 
 const styles = StyleSheet.create({
-
-  Button:{
+  Button: {
     color: 'white',
     backgroundColor: 'grey',
     textAlign: 'center',
@@ -636,20 +665,47 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     shadowColor: 'black',
     elevation: 1,
-    shadowOpacity: .5,
+    shadowOpacity: 0.5,
   },
-  Success:{
+  Success: {
     backgroundColor: 'green',
   },
-  Primary:{
+  Primary: {
     backgroundColor: 'blue',
   },
-  Warning:{
+  Warning: {
     backgroundColor: 'orange',
   },
-  Error:{
+  Error: {
     backgroundColor: 'red',
-  }
-})
+  },
+  radio: {
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    borderColor: 'black',
+    borderWidth: 2,
+    margin: 10,
+  },
+  radioText: {
+    fontSize: 30,
+  },
+  radioWrapper: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  radioBg: {
+    backgroundColor: 'black',
+    width: 28,
+    height: 28,
+    borderRadius: 14,
+    margin: 4,
+  },
+});
 
 export default App;
+
+// React Native does not have Radio Buttons
+// We can use Picker or Switch for the same
+// Picker is used when we have multiple options to choose from
+// Switch is used when we have only 2 options to choose from
