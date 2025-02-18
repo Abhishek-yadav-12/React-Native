@@ -504,7 +504,9 @@
 
 // ************************************************************************************************
 
-import React, {useState} from "react";
+// useEffect unmounting with TIME INTERVAL
+
+import React, {useEffect, useState} from "react";
 import { View, Text, Button } from "react-native";
 
 const App = () => {
@@ -524,6 +526,16 @@ const App = () => {
 }
 
 const User = () => {
+
+  let timer = setInterval(() =>{
+    console.warn("Timer called");
+  }, 2000)
+
+  useEffect (() => {
+    return() =>
+      clearInterval(timer);
+  })
+
   return(
     <View>
       <Text style={{fontSize: 22, color:'red'}}>
