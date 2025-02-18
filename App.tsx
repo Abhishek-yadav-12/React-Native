@@ -549,58 +549,107 @@
 
 // Responsive UI using Flex
 
-import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+// import React from 'react';
+// import {View, Text, StyleSheet} from 'react-native';
 
-const App = () => {
-  return (
-    <View style={styles.main}>
-      <View style={styles.Box1}>
-        <View style={styles.InnerBox1}></View>
-        <View style={styles.InnerBox2}></View>
-        <View style={styles.InnerBox3}></View>
-      </View>
-      <View style={styles.Box2}></View>
-      <View style={styles.Box3}></View>
+// const App = () => {
+//   return (
+//     <View style={styles.main}>
+//       <View style={styles.Box1}>
+//         <View style={styles.InnerBox1}></View>
+//         <View style={styles.InnerBox2}></View>
+//         <View style={styles.InnerBox3}></View>
+//       </View>
+//       <View style={styles.Box2}></View>
+//       <View style={styles.Box3}></View>
+//     </View>
+//   );
+// };
+
+// const styles = StyleSheet.create({
+//   main:{
+//     backgroundColor: 'yellow',
+//     flex: 1,
+//   },
+//   Box1:{
+//     backgroundColor: 'red',
+//     flex: 2,
+//     flexDirection: 'row'
+//   },
+//   Box2:{
+//     backgroundColor: 'blue',
+//     flex: 1,
+//   },
+//   Box3:{
+//     backgroundColor: 'green',
+//     flex: 1,
+//   },
+//   InnerBox1:{
+//     backgroundColor: 'skyblue',
+//     flex: 1,
+//     margin:5
+//   },
+//   InnerBox2:{
+//     backgroundColor: 'skyblue',
+//     flex: 1,
+//     margin:5
+//   },
+//   InnerBox3:{
+//     backgroundColor: 'skyblue',
+//     flex: 1,
+//     margin:5
+//   },
+
+
+// })
+
+// export default App;
+
+// Default button in react native does not support much of the styling, so we can use TouchableHiglights or TouchableOpacity to style the button
+
+import React from "react";
+import { View, Text, TouchableHighlight, StyleSheet, TouchableOpacity } from "react-native";
+
+const App =() => {
+  return(
+    <View>
+      <TouchableOpacity>
+        <Text style={[styles.Button, styles.Success]}>Success</Text>
+        <Text style={[styles.Button, styles.Primary]}>Primary</Text>
+        <Text style={[styles.Button, styles.Warning]}>Warning</Text>
+        <Text style={[styles.Button, styles.Error]}>Error</Text>
+        <Text style={styles.Button}>Button</Text>
+      </TouchableOpacity>
     </View>
-  );
-};
+  )
+}
 
 const styles = StyleSheet.create({
-  main:{
-    backgroundColor: 'yellow',
-    flex: 1,
+
+  Button:{
+    color: 'white',
+    backgroundColor: 'grey',
+    textAlign: 'center',
+    fontSize: 25,
+    margin: 10,
+    padding: 7,
+    borderRadius: 10,
+    shadowColor: 'black',
+    elevation: 1,
+    shadowOpacity: .5,
   },
-  Box1:{
-    backgroundColor: 'red',
-    flex: 2,
-    flexDirection: 'row'
-  },
-  Box2:{
-    backgroundColor: 'blue',
-    flex: 1,
-  },
-  Box3:{
+  Success:{
     backgroundColor: 'green',
-    flex: 1,
   },
-  InnerBox1:{
-    backgroundColor: 'skyblue',
-    flex: 1,
-    margin:5
+  Primary:{
+    backgroundColor: 'blue',
   },
-  InnerBox2:{
-    backgroundColor: 'skyblue',
-    flex: 1,
-    margin:5
+  Warning:{
+    backgroundColor: 'orange',
   },
-  InnerBox3:{
-    backgroundColor: 'skyblue',
-    flex: 1,
-    margin:5
-  },
-
-
+  Error:{
+    backgroundColor: 'red',
+  }
 })
 
 export default App;
