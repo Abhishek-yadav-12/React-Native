@@ -443,11 +443,26 @@
 // 3. Unmounting - When we remove the component from the screen
 // We can use life cycle methods in functional components using useEffect hook
  
+// Hooks - useState, useEffect, useContext, useReducer, useRef, useMemo, useCallback
+// Ḥooks helped in overridding the lifecycle methods in the class components and also helped in using the state in functional components
+// It helps us use state and other react features without writing a class in a functional component
+// Anything that starts with "use" is a hook
+// For all lifestyle methods, we use useEffect hook
 
-import React from 'react';
+
+import React, { useEffect } from 'react';
 import {View, Text} from 'react-native';
 
 const App = () => {
+
+  useEffect(() => {   // Now whenever the component is mounted or starts or any change happens or any event occurs or any props change, the console will print Hello!
+    console.warn("Hello!");  
+  }, [])
+
+// Primarily used whenever we want a certain function to be called when the component is mounted or updated or unmounted
+// for example, when we want to fetch data from an API, we use useEffect hook to fetch the data when the component is mounted
+// And when we want the useEffect to be called only for the first time when component loads then we can simply pass an empty array as the second argument of useEffect as ,[] 
+
   return (
     <View>
       <Text style={{fontSize: 21, color: 'red'}}>Life Cycle Methods</Text>
