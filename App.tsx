@@ -450,24 +450,54 @@
 // For all lifestyle methods, we use useEffect hook
 
 
-import React, { useEffect } from 'react';
-import {View, Text} from 'react-native';
+// import React, { useEffect, useState } from 'react';
+// import {View, Text, Button} from 'react-native';
 
-const App = () => {
+// const App = () => {
 
-  useEffect(() => {   // Now whenever the component is mounted or starts or any change happens or any event occurs or any props change, the console will print Hello!
-    console.warn("Hello!");  
-  }, [])
+//   const [count, setCount] = useState(0);
+//   const [data, setData] = useState(10);
+ 
+//   useEffect(() => {   // Now whenever the component is mounted or starts or any change happens or any event occurs or any props change, the console will print Hello!
+//     console.warn(count);  
+//   }, [count]) // This useEffect will only be called when the count changes
 
-// Primarily used whenever we want a certain function to be called when the component is mounted or updated or unmounted
-// for example, when we want to fetch data from an API, we use useEffect hook to fetch the data when the component is mounted
-// And when we want the useEffect to be called only for the first time when component loads then we can simply pass an empty array as the second argument of useEffect as ,[] 
+// // Primarily used whenever we want a certain function to be called when the component is mounted or updated or unmounted
+// // for example, when we want to fetch data from an API, we use useEffect hook to fetch the data when the component is mounted
+// // And when we want the useEffect to be called only for the first time when component loads then we can simply pass an empty array as the second argument of useEffect as ,[] 
+// // ,[] is the case of componentDidMount
+// // ,[count] is the case of componentDidUpdate but in this case it will still be called when the component is mounted for the first time 
+// // that means atleast 1 time it will be called
 
-  return (
-    <View>
-      <Text style={{fontSize: 21, color: 'red'}}>Life Cycle Methods</Text>
-    </View>
-  );
-};
+//   return (
+//     <View>
+//       <Text style={{fontSize: 21, color: 'red'}}>Life Cycle Methods</Text>
+//       <Text style={{fontSize: 21, color: 'red'}}>{count}</Text>
+//       <Button title='Count' onPress={()=>setCount(count+1)} />
+//       <Button title='Data' onPress={()=>setData(data-1)} />
+//         <User info={{data, count}}/>
+//     </View>
+//   );
+// };
 
-export default App;
+// const User = (props) => {
+
+//   useEffect(() => {
+//     console.warn("Count is updated");
+//   }, [props.info.count])
+
+//   useEffect(() => {
+//     console.warn("Count is updated");
+//   }, [props.info.data])
+
+
+//   return(
+//     <View>
+//       <Text style={{fontSize: 22}}>User Component</Text>
+//       <Text style={{fontSize: 22}}>{props.info.count}</Text>
+//       <Text style={{fontSize: 22}}>{props.info.data}</Text>
+//     </View>
+//   )
+// }
+
+// export default App;
