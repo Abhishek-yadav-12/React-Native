@@ -442,13 +442,12 @@
 // 2. Updating - When we update the state of the component
 // 3. Unmounting - When we remove the component from the screen
 // We can use life cycle methods in functional components using useEffect hook
- 
+
 // Hooks - useState, useEffect, useContext, useReducer, useRef, useMemo, useCallback
 // Ḥooks helped in overridding the lifecycle methods in the class components and also helped in using the state in functional components
 // It helps us use state and other react features without writing a class in a functional component
 // Anything that starts with "use" is a hook
 // For all lifestyle methods, we use useEffect hook
-
 
 // import React, { useEffect, useState } from 'react';
 // import {View, Text, Button} from 'react-native';
@@ -457,16 +456,16 @@
 
 //   const [count, setCount] = useState(0);
 //   const [data, setData] = useState(10);
- 
+
 //   useEffect(() => {   // Now whenever the component is mounted or starts or any change happens or any event occurs or any props change, the console will print Hello!
-//     console.warn(count);  
+//     console.warn(count);
 //   }, [count]) // This useEffect will only be called when the count changes
 
 // // Primarily used whenever we want a certain function to be called when the component is mounted or updated or unmounted
 // // for example, when we want to fetch data from an API, we use useEffect hook to fetch the data when the component is mounted
-// // And when we want the useEffect to be called only for the first time when component loads then we can simply pass an empty array as the second argument of useEffect as ,[] 
+// // And when we want the useEffect to be called only for the first time when component loads then we can simply pass an empty array as the second argument of useEffect as ,[]
 // // ,[] is the case of componentDidMount
-// // ,[count] is the case of componentDidUpdate but in this case it will still be called when the component is mounted for the first time 
+// // ,[count] is the case of componentDidUpdate but in this case it will still be called when the component is mounted for the first time
 // // that means atleast 1 time it will be called
 
 //   return (
@@ -490,7 +489,6 @@
 //     console.warn("Count is updated");
 //   }, [props.info.data])
 
-
 //   return(
 //     <View>
 //       <Text style={{fontSize: 22}}>User Component</Text>
@@ -506,43 +504,103 @@
 
 // useEffect unmounting with TIME INTERVAL
 
-import React, {useEffect, useState} from "react";
-import { View, Text, Button } from "react-native";
+// import React, {useEffect, useState} from "react";
+// import { View, Text, Button } from "react-native";
+
+// const App = () => {
+
+//   const [show, setShow] = useState(true);
+
+//   return(
+//     <View>
+//       <Text style={{fontSize: 24}}>Show or Hide Component</Text>
+//       <Button title="Toggle Component" onPress={()=>setShow(!show)}/>
+//         {
+//           show === true ? <User /> : null
+//         }
+//     </View>
+
+//   )
+// }
+
+// const User = () => {
+
+//   let timer = setInterval(() =>{
+//     console.warn("Timer called");
+//   }, 2000)
+
+//   useEffect (() => {
+//     return() =>
+//       clearInterval(timer);
+//   })
+
+//   return(
+//     <View>
+//       <Text style={{fontSize: 22, color:'red'}}>
+//         User Component
+//       </Text>
+//     </View>
+//   )
+// }
+
+// export default App;
+
+// **********************************************************************************************
+
+// Responsive UI using Flex
+
+import React from 'react';
+import {View, Text, StyleSheet} from 'react-native';
 
 const App = () => {
-
-  const [show, setShow] = useState(true);
-
-  return(
-    <View>
-      <Text style={{fontSize: 24}}>Show or Hide Component</Text>
-      <Button title="Toggle Component" onPress={()=>setShow(!show)}/>
-        {
-          show === true ? <User /> : null
-        }
+  return (
+    <View style={styles.main}>
+      <View style={styles.Box1}>
+        <View style={styles.InnerBox1}></View>
+        <View style={styles.InnerBox2}></View>
+        <View style={styles.InnerBox3}></View>
+      </View>
+      <View style={styles.Box2}></View>
+      <View style={styles.Box3}></View>
     </View>
+  );
+};
 
-  )
-}
+const styles = StyleSheet.create({
+  main:{
+    backgroundColor: 'yellow',
+    flex: 1,
+  },
+  Box1:{
+    backgroundColor: 'red',
+    flex: 2,
+    flexDirection: 'row'
+  },
+  Box2:{
+    backgroundColor: 'blue',
+    flex: 1,
+  },
+  Box3:{
+    backgroundColor: 'green',
+    flex: 1,
+  },
+  InnerBox1:{
+    backgroundColor: 'skyblue',
+    flex: 1,
+    margin:5
+  },
+  InnerBox2:{
+    backgroundColor: 'skyblue',
+    flex: 1,
+    margin:5
+  },
+  InnerBox3:{
+    backgroundColor: 'skyblue',
+    flex: 1,
+    margin:5
+  },
 
-const User = () => {
 
-  let timer = setInterval(() =>{
-    console.warn("Timer called");
-  }, 2000)
-
-  useEffect (() => {
-    return() =>
-      clearInterval(timer);
-  })
-
-  return(
-    <View>
-      <Text style={{fontSize: 22, color:'red'}}>
-        User Component
-      </Text>
-    </View>
-  )
-}
+})
 
 export default App;
