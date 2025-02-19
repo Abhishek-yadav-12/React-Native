@@ -606,135 +606,132 @@
 
 // Default button in react native does not support much of the styling, so we can use TouchableHiglights or TouchableOpacity to style the button
 
-import React, {useState} from 'react';
-import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
+// import React, {useState} from 'react';
+// import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 
-const App = () => {
+// const App = () => {
 
-  const skills = [
-    {
-      id:1,
-      name:"Java"
-    },
-    {
-      id:2,
-      name:"PHP"
-    },
-    {
-      id:3,
-      name:"Node"
-    },
-    {
-      id:4,
-      name:"SQL"
-    },
-  ]
+//   const skills = [
+//     {
+//       id:1,
+//       name:"Java"
+//     },
+//     {
+//       id:2,
+//       name:"PHP"
+//     },
+//     {
+//       id:3,
+//       name:"Node"
+//     },
+//     {
+//       id:4,
+//       name:"SQL"
+//     },
+//   ]
 
+//   const [radio, setRadio] = useState(1);
 
+//   return (
+//     <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+//       {/* <TouchableOpacity>
+//         <Text style={[styles.Button, styles.Success]}>Success</Text>
+//       </TouchableOpacity>
+//       <TouchableOpacity>
+//         <Text style={[styles.Button, styles.Primary]}>Primary</Text>
+//       </TouchableOpacity>
+//       <TouchableOpacity>
+//         <Text style={[styles.Button, styles.Warning]}>Warning</Text>
+//       </TouchableOpacity>
+//       <TouchableOpacity>
+//         <Text style={[styles.Button, styles.Error]}>Error</Text>
+//       </TouchableOpacity>
+//       <TouchableOpacity>
+//         <Text style={styles.Button}>Button</Text>
+//       </TouchableOpacity> */}
 
+//       {/****************************Radio Buttons************************ */}
 
-  const [radio, setRadio] = useState(1);
+//       {/* Dynamic Radio Button */}
 
-  return (
-    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-      {/* <TouchableOpacity>
-        <Text style={[styles.Button, styles.Success]}>Success</Text>
-      </TouchableOpacity>
-      <TouchableOpacity>
-        <Text style={[styles.Button, styles.Primary]}>Primary</Text>
-      </TouchableOpacity>
-      <TouchableOpacity>
-        <Text style={[styles.Button, styles.Warning]}>Warning</Text>
-      </TouchableOpacity>
-      <TouchableOpacity>
-        <Text style={[styles.Button, styles.Error]}>Error</Text>
-      </TouchableOpacity>
-      <TouchableOpacity>
-        <Text style={styles.Button}>Button</Text>
-      </TouchableOpacity> */}
-
-      {/****************************Radio Buttons************************ */}
-
-      {/* Dynamic Radio Button */}
-
-        {
-          skills.map((item, index)=><TouchableOpacity
-          key={index}
-          onPress={() => setRadio(item.id)}>
-          <View style={styles.radioWrapper}>
-            <View style={styles.radio}>
-              {radio === item.id ? <View style={styles.radioBg}></View> : null}
-            </View>
+//         {
+//           skills.map((item, index)=><TouchableOpacity
+//           key={index}
+//           onPress={() => setRadio(item.id)}>
+//           <View style={styles.radioWrapper}>
+//             <View style={styles.radio}>
+//               {radio === item.id ? <View style={styles.radioBg}></View> : null}
+//             </View>
   
-            <Text style={styles.radioText}>{item.name}</Text>
-          </View>
-        </TouchableOpacity>)
-        }
+//             <Text style={styles.radioText}>{item.name}</Text>
+//           </View>
+//         </TouchableOpacity>)
+//         }
 
 
-      {/* <TouchableOpacity onPress={() => setRadio(2)}>
-        <View style={styles.radioWrapper}>
-          <View style={styles.radio}>
-            {radio === 2 ? <View style={styles.radioBg}></View> : null}
-          </View>
+//       {/* <TouchableOpacity onPress={() => setRadio(2)}>
+//         <View style={styles.radioWrapper}>
+//           <View style={styles.radio}>
+//             {radio === 2 ? <View style={styles.radioBg}></View> : null}
+//           </View>
 
-          <Text style={styles.radioText}>Radio 2</Text>
-        </View>
-      </TouchableOpacity> */}
-    </View>
-  );
-};
+//           <Text style={styles.radioText}>Radio 2</Text>
+//         </View>
+//       </TouchableOpacity> */}
+//     </View>
+//   );
+// };
 
-const styles = StyleSheet.create({
-  Button: {
-    color: 'white',
-    backgroundColor: 'grey',
-    textAlign: 'center',
-    fontSize: 25,
-    margin: 10,
-    padding: 7,
-    borderRadius: 10,
-    shadowColor: 'black',
-    elevation: 1,
-    shadowOpacity: 0.5,
-  },
-  Success: {
-    backgroundColor: 'green',
-  },
-  Primary: {
-    backgroundColor: 'blue',
-  },
-  Warning: {
-    backgroundColor: 'orange',
-  },
-  Error: {
-    backgroundColor: 'red',
-  },
-  radio: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
-    borderColor: 'black',
-    borderWidth: 2,
-    margin: 10,
-  },
-  radioText: {
-    fontSize: 30,
-  },
-  radioWrapper: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  radioBg: {
-    backgroundColor: 'black',
-    width: 28,
-    height: 28,
-    borderRadius: 14,
-    margin: 4,
-  },
-});
+// const styles = StyleSheet.create({
+//   Button: {
+//     color: 'white',
+//     backgroundColor: 'grey',
+//     textAlign: 'center',
+//     fontSize: 25,
+//     margin: 10,
+//     padding: 7,
+//     borderRadius: 10,
+//     shadowColor: 'black',
+//     elevation: 1,
+//     shadowOpacity: 0.5,
+//   },
+//   Success: {
+//     backgroundColor: 'green',
+//   },
+//   Primary: {
+//     backgroundColor: 'blue',
+//   },
+//   Warning: {
+//     backgroundColor: 'orange',
+//   },
+//   Error: {
+//     backgroundColor: 'red',
+//   },
+//   radio: {
+//     width: 40,
+//     height: 40,
+//     borderRadius: 20,
+//     borderColor: 'black',
+//     borderWidth: 2,
+//     margin: 10,
+//   },
+//   radioText: {
+//     fontSize: 30,
+//   },
+//   radioWrapper: {
+//     flexDirection: 'row',
+//     alignItems: 'center',
+//   },
+//   radioBg: {
+//     backgroundColor: 'black',
+//     width: 28,
+//     height: 28,
+//     borderRadius: 14,
+//     margin: 4,
+//   },
+// });
 
-export default App;
+// export default App;
 
 // React Native does not have Radio Buttons
 // We can use Picker or Switch for the same
@@ -747,3 +744,38 @@ export default App;
 // Apply map over the radio button
 // Update the state and skill
 
+// ****************************************************************************************
+
+// Activity Indicator - Loader 
+
+import React, { useState } from "react";
+import { View, Text, Button, ActivityIndicator } from "react-native";  
+
+const App = () => {
+
+  const [show, setShow] = useState(false);
+  const showLoader = () => {
+    setShow(true);
+
+    setTimeout(() => {
+      setShow(false)
+    }, 4000);
+      
+  }
+  
+  return(
+    <View style={{alignItems: 'center', justifyContent: 'center', flex:1}}>
+      <Text style={{fontSize: 24, color: 'red'}}>
+        Activity Indicator - Loader
+      </Text>
+      <ActivityIndicator size={50} color={"blue"} animating={show}/>
+      {
+        show ? <ActivityIndicator size={50} color={"red"}/> : null
+      }
+
+      <Button title="Loader" onPress={showLoader}/>
+    </View>
+  )
+}                     // In android we can adjust the size of the loader by using numbers and as well as small, medium and large but in ios we only use words and not numbers.
+
+export default App;
