@@ -610,6 +610,29 @@ import React, {useState} from 'react';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 
 const App = () => {
+
+  const skills = [
+    {
+      id:1,
+      name:"Java"
+    },
+    {
+      id:2,
+      name:"PHP"
+    },
+    {
+      id:3,
+      name:"Node"
+    },
+    {
+      id:4,
+      name:"SQL"
+    },
+  ]
+
+
+
+
   const [radio, setRadio] = useState(1);
 
   return (
@@ -632,16 +655,24 @@ const App = () => {
 
       {/****************************Radio Buttons************************ */}
 
-      <TouchableOpacity onPress={() => setRadio(1)}>
-        <View style={styles.radioWrapper}>
-          <View style={styles.radio}>
-            {radio === 1 ? <View style={styles.radioBg}></View> : null}
-          </View>
+      {/* Dynamic Radio Button */}
 
-          <Text style={styles.radioText}>Radio 1</Text>
-        </View>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={() => setRadio(2)}>
+        {
+          skills.map((item, index)=><TouchableOpacity
+          key={index}
+          onPress={() => setRadio(item.id)}>
+          <View style={styles.radioWrapper}>
+            <View style={styles.radio}>
+              {radio === item.id ? <View style={styles.radioBg}></View> : null}
+            </View>
+  
+            <Text style={styles.radioText}>{item.name}</Text>
+          </View>
+        </TouchableOpacity>)
+        }
+
+
+      {/* <TouchableOpacity onPress={() => setRadio(2)}>
         <View style={styles.radioWrapper}>
           <View style={styles.radio}>
             {radio === 2 ? <View style={styles.radioBg}></View> : null}
@@ -649,7 +680,7 @@ const App = () => {
 
           <Text style={styles.radioText}>Radio 2</Text>
         </View>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
     </View>
   );
 };
@@ -709,3 +740,10 @@ export default App;
 // We can use Picker or Switch for the same
 // Picker is used when we have multiple options to choose from
 // Switch is used when we have only 2 options to choose from
+
+
+// Dynamic Radio Button - 
+// Make an array of skills
+// Apply map over the radio button
+// Update the state and skill
+
