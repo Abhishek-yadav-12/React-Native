@@ -899,3 +899,39 @@
 
 // export default App;
 
+// **************************************************************************************
+
+// Platform 
+
+import React from "react";
+import {View, Text, Button, StyleSheet, Platform} from "react-native"
+
+const App = () => {
+  return(
+    <View style={styles.main}>
+      <Text style={{fontSize: 20}}>
+        Platform : {Platform.OS}
+      </Text>
+      {
+        Platform.OS === "android" ? <View style={{backgroundColor: "red", height:100, width: 100}}></View> 
+        : 
+        <View style={{backgroundColor: "green",  height:100, width: 100}} ></View>
+      }
+
+      <Text style={styles.text}>
+      {JSON.stringify(Platform.constants.reactNativeVersion)}
+      </Text>
+    </View>
+  )
+}
+
+const styles = StyleSheet.create({
+  main:{
+    flex:1,
+  },
+  text:{
+    color: Platform.OS==="ios" ? "red" : "blue"
+  }
+})
+
+export default App;
