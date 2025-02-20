@@ -808,7 +808,7 @@
 //     //   </View>
 //     // </View>
 
-//     <View style={styles.main}> 
+//     <View style={styles.main}>
 //       <Pressable
 //       onPress={()=>console.warn("Press")}
 //       onPressIn={()=>console.warn("Press In")}
@@ -864,7 +864,7 @@
 // export default App;
 
 //  We can also make our own modal without using the modal import component
- 
+
 // ****************************************************************************************
 
 // Status Bar or in General the Notification Bar we see on phones
@@ -901,7 +901,7 @@
 
 // **************************************************************************************
 
-// Platform 
+// Platform
 
 // import React from "react";
 // import {View, Text, Button, StyleSheet, Platform} from "react-native"
@@ -913,8 +913,8 @@
 //         Platform : {Platform.OS}
 //       </Text>
 //       {
-//         Platform.OS === "android" ? <View style={{backgroundColor: "red", height:100, width: 100}}></View> 
-//         : 
+//         Platform.OS === "android" ? <View style={{backgroundColor: "red", height:100, width: 100}}></View>
+//         :
 //         <View style={{backgroundColor: "green",  height:100, width: 100}} ></View>
 //       }
 
@@ -966,3 +966,53 @@
 
 // export default App;
 
+// ***********************************************************************************
+
+// Self made Modal
+
+
+import React, {useState} from 'react';
+import {View, Text, Button, StyleSheet, TextInput} from 'react-native';
+
+const App = () => {
+  const [show, setShow] = useState(false);
+
+  return (
+    <View style={styles.main}>
+      {
+        show ? <View style={styles.modal}>
+        <View style={styles.body}>
+          <Text>Enter in Detail </Text>
+          <Button title="Close" onPress={()=>setShow(false)}/>
+        </View>
+      </View>
+      : 
+      null
+      }
+      <Button title="Pop Up" onPress={()=>setShow(true)}/>
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  main: {
+    flex: 1,
+    justifyContent: 'flex-end',
+  },
+  modal: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(50, 50, 50, .5)',
+  },
+  body: {
+    backgroundColor: '#fff',
+    height: 300,
+    width: 300,
+    padding: 20,
+    justifyContent: 'flex-end',
+    borderRadius: 10,
+  },
+});
+
+export default App;
