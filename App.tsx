@@ -968,28 +968,92 @@
 
 // ***********************************************************************************
 
-// Self made Modal
+// Custom Modal - Pop Up
 
+// import React, {useState} from 'react';
+// import {View, Text, Button, StyleSheet, TextInput} from 'react-native';
 
-import React, {useState} from 'react';
-import {View, Text, Button, StyleSheet, TextInput} from 'react-native';
+// const App = () => {
+//   const [show, setShow] = useState(false);
+
+//   return (
+//     <View style={styles.main}>
+//       {
+//         show ? <View style={styles.modal}>
+//         <View style={styles.body}>
+//           <Text>Enter in Detail </Text>
+//           <Button title="Close" onPress={()=>setShow(false)}/>
+//         </View>
+//       </View>
+//       :
+//       null
+//       }
+//       <Button title="Pop Up" onPress={()=>setShow(true)}/>
+//     </View>
+//   );
+// };
+
+// const styles = StyleSheet.create({
+//   main: {
+//     flex: 1,
+//     justifyContent: 'flex-end',
+//   },
+//   modal: {
+//     flex: 1,
+//     justifyContent: 'center',
+//     alignItems: 'center',
+//     backgroundColor: 'rgba(50, 50, 50, .5)',
+//   },
+//   body: {
+//     backgroundColor: '#fff',
+//     height: 300,
+//     width: 300,
+//     padding: 20,
+//     justifyContent: 'flex-end',
+//     borderRadius: 10,
+//   },
+// });
+
+// export default App;
+
+// ************************************************************************************
+
+// Navigation - 3 Types - Stack Drawer Tab Commonly known as Routing in Web Development
+
+// Stack Navigation
+
+import React from 'react';
+import {View, Text, Button, StyleSheet} from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+
+const Stack = createNativeStackNavigator();
 
 const App = () => {
-  const [show, setShow] = useState(false);
+  return (
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Login" component={Login}></Stack.Screen>
+        <Stack.Screen name="Home" component={Home}></Stack.Screen>
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+};
+
+const Home = (props) => {
+  return (
+    <View style={styles.main}>
+      <Text style={{fontSize: 30}}>Home Screen</Text>
+      <Button title='Go to Login Page' onPress={()=>props.navigation.navigate("Login")} />
+    </View>
+  );
+};
+const Login = (props) => {  // the props will actually show an error asking to explicitly define the type of props because it is a typescript file.
 
   return (
     <View style={styles.main}>
-      {
-        show ? <View style={styles.modal}>
-        <View style={styles.body}>
-          <Text>Enter in Detail </Text>
-          <Button title="Close" onPress={()=>setShow(false)}/>
-        </View>
-      </View>
-      : 
-      null
-      }
-      <Button title="Pop Up" onPress={()=>setShow(true)}/>
+      <Text style={{fontSize: 30}}>Login Screen</Text>
+      <Button title='Go to Home Page' onPress={()=>props.navigation.navigate("Home")} />
     </View>
   );
 };
@@ -997,21 +1061,8 @@ const App = () => {
 const styles = StyleSheet.create({
   main: {
     flex: 1,
-    justifyContent: 'flex-end',
-  },
-  modal: {
-    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'rgba(50, 50, 50, .5)',
-  },
-  body: {
-    backgroundColor: '#fff',
-    height: 300,
-    width: 300,
-    padding: 20,
-    justifyContent: 'flex-end',
-    borderRadius: 10,
   },
 });
 
