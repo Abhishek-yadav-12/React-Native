@@ -1023,12 +1023,12 @@
 // Stack Navigation
 
 import React from 'react';
-import {View, Text, Button, StyleSheet, TextInput} from 'react-native';
+import {Button} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {Home} from './components/Home';
 import {Login} from './components/Login';
-import { Header } from './components/Header';
+import {Header} from './components/Header';
 
 const Stack = createNativeStackNavigator();
 
@@ -1069,13 +1069,5 @@ const App = () => {
     </NavigationContainer>
   );
 };
-
-const styles = StyleSheet.create({
-  main: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-});
 
 export default App;
