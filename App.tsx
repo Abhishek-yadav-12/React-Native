@@ -782,83 +782,120 @@
 
 // Modal in React Native - Dialog Box
 
-import React, {useState} from 'react';
-import {View, Text, Button, StyleSheet, Modal, Pressable, Alert} from 'react-native';
+// import React, {useState} from 'react';
+// import {View, Text, Button, StyleSheet, Modal, Pressable, Alert} from 'react-native';
 
-const App = () => {
-  const [show, setShow] = useState(false);
+// const App = () => {
+//   const [show, setShow] = useState(false);
 
-  return (
-    // <View style={styles.main}>
-    //   <Modal
-    //   transparent={true}
-    //   visible={show}
-    //   animationType="fade" // or slide
+//   return (
+//     // <View style={styles.main}>
+//     //   <Modal
+//     //   transparent={true}
+//     //   visible={show}
+//     //   animationType="fade" // or slide
 
-    //   >
-    //     <View style={styles.centerView}>
-    //       <View style={styles.modalView}>
-    //         <Text style={styles.modalText}>Modal - Dialog Box</Text>
-    //         <Button title='CLose' onPress={()=>setShow(false)} />
-    //       </View>
-    //     </View>
-    //     </Modal>
-    //   <View style={styles.buttonView}>
-    //     <Button title="Open" onPress={()=>setShow(true)} />
-    //   </View>
-    // </View>
+//     //   >
+//     //     <View style={styles.centerView}>
+//     //       <View style={styles.modalView}>
+//     //         <Text style={styles.modalText}>Modal - Dialog Box</Text>
+//     //         <Button title='CLose' onPress={()=>setShow(false)} />
+//     //       </View>
+//     //     </View>
+//     //     </Modal>
+//     //   <View style={styles.buttonView}>
+//     //     <Button title="Open" onPress={()=>setShow(true)} />
+//     //   </View>
+//     // </View>
 
-    <View style={styles.main}> 
-      <Pressable
-      onPress={()=>console.warn("Press")}
-      onPressIn={()=>console.warn("Press In")}
-      onLongPress={()=>console.warn("Long Press")}
-      onPressOut={()=>console.warn("Press Out")}
-      >
-        <Text style={styles.pressable}>Pressable</Text>
-      </Pressable>
-    </View>
-  );
-};
+//     <View style={styles.main}> 
+//       <Pressable
+//       onPress={()=>console.warn("Press")}
+//       onPressIn={()=>console.warn("Press In")}
+//       onLongPress={()=>console.warn("Long Press")}
+//       delayLongPress={2000}
+//       // The default time of a long press is 500ms but we can also adjust that manually
+//       onPressOut={()=>console.warn("Press Out")}
+//       >
+//         <Text style={styles.pressable}>Pressable</Text>
+//       </Pressable>
+//     </View>
+//   );
+// };
 
-const styles = StyleSheet.create({
-  main: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  buttonView: {
-    flex: 1,
-    justifyContent: 'flex-end',
-  },
-  centerView: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  modalView: {
-    backgroundColor: '#fff',
-    padding: 30,
-    borderRadius: 20,
-    shadowColor: 'black',
-    elevation: 5,
-  },
-  modalText: {
-    fontSize: 30,
-    marginBottom: 20,
-  },
-  pressable:{
-  color: '#fff',
-  backgroundColor: 'green',
-  padding: 10,
-  margin: 2,
-  borderRadius: 10,
-  fontSize: 20,
-  shadowColor: '#000',
-    elevation: 5
-  }
-});
+// const styles = StyleSheet.create({
+//   main: {
+//     flex: 1,
+//     justifyContent: 'center',
+//     alignItems: 'center'
+//   },
+//   buttonView: {
+//     flex: 1,
+//     justifyContent: 'flex-end',
+//   },
+//   centerView: {
+//     flex: 1,
+//     justifyContent: 'center',
+//     alignItems: 'center',
+//   },
+//   modalView: {
+//     backgroundColor: '#fff',
+//     padding: 30,
+//     borderRadius: 20,
+//     shadowColor: 'black',
+//     elevation: 5,
+//   },
+//   modalText: {
+//     fontSize: 30,
+//     marginBottom: 20,
+//   },
+//   pressable:{
+//   color: '#fff',
+//   backgroundColor: 'green',
+//   padding: 10,
+//   margin: 2,
+//   borderRadius: 10,
+//   fontSize: 20,
+//   shadowColor: '#000',
+//     elevation: 5
+//   }
+// });
 
-export default App;
+// export default App;
 
 //  We can also make our own modal without using the modal import component
+ 
+// ****************************************************************************************
+
+// Status Bar or in General the Notification Bar we see on phones
+
+// import React, { useState } from "react";
+// import {View, Text, Button, StyleSheet, StatusBar} from "react-native"
+
+// const App = () => {
+
+//   const [bar, setBar] = useState(false)
+//   const [barStyle, setBarStyle] = useState("default")
+
+//   return(
+//     <View style={styles.main}>
+//       <StatusBar
+//       backgroundColor="red"
+//       barStyle={barStyle}
+//       hidden={bar}
+//       />
+//       <Button title="Toggle Status Bar" onPress={()=>setBar(!bar)} />
+//       <Button title="Toggle Bar Style" onPress={()=>setBarStyle("dark-content")}/>
+//     </View>
+//   )
+// }
+
+// const styles = StyleSheet.create({
+//   main:{
+//     flex:1,
+//     justifyContent: 'center'
+//   }
+// })
+
+// export default App;
+

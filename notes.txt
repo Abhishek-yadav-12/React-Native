@@ -39,3 +39,26 @@ Map function is used to create custom list
 Section list - We can only use data key as the second array in the nested condition and not anything else for now according to the official documentation.
 
 
+********************
+default code
+
+import React from "react";
+import {View, Text, Button, StyleSheet} from "react-native"
+
+const App = () => {
+  return(
+    <View style={styles.main}>
+    </View>
+  )
+}
+
+const styles = StyleSheet.create({
+  main:{
+    flex:1,
+  }
+})
+
+export default App;
+
+
+**********************
