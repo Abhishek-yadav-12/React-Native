@@ -1023,29 +1023,38 @@
 // Stack Navigation
 
 import React from 'react';
-import {View, Text, Button, StyleSheet} from 'react-native';
+import {View, Text, Button, StyleSheet, TextInput} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {Home} from './components/Home';
+import {Login} from './components/Login';
+import { Header } from './components/Header';
 
 const Stack = createNativeStackNavigator();
 
 const App = () => {
+  const btnPress = () => {
+    console.warn('Button Pressed!');
+  };
+
   return (
     <NavigationContainer>
       <Stack.Navigator
-      screenOptions={{
-        headerStyle: {
-          backgroundColor: 'lightgreen',
-        },
-        headerTintColor: 'green', // header text color
-        headerTitleStyle: {
-          fontSize: 20,
-        },
-      }}>
+        screenOptions={{
+          headerStyle: {
+            backgroundColor: 'lightgreen',
+          },
+          headerTintColor: 'green', // header text color
+          headerTitleStyle: {
+            fontSize: 20,
+          },
+        }}>
         <Stack.Screen
           name="Login"
           component={Login}
           options={{
+            headerTitle: () => <Button onPress={btnPress} title="Left" />,
+            headerRight: () => <Header />,
             title: 'User Login',
             headerStyle: {
               backgroundColor: 'brown',
@@ -1054,36 +1063,10 @@ const App = () => {
             headerTitleStyle: {
               fontSize: 20,
             },
-          }}
-          ></Stack.Screen>
+          }}></Stack.Screen>
         <Stack.Screen name="Home" component={Home}></Stack.Screen>
       </Stack.Navigator>
     </NavigationContainer>
-  );
-};
-
-const Home = props => {
-  return (
-    <View style={styles.main}>
-      <Text style={{fontSize: 30}}>Home Screen</Text>
-      <Button
-        title="Go to Login Page"
-        onPress={() => props.navigation.navigate('Login')}
-      />
-    </View>
-  );
-};
-const Login = props => {
-  // the props will actually show an error asking to explicitly define the type of props because it is a typescript file.
-
-  return (
-    <View style={styles.main}>
-      <Text style={{fontSize: 30}}>Login Screen</Text>
-      <Button
-        title="Go to Home Page"
-        onPress={() => props.navigation.navigate('Home')}
-      />
-    </View>
   );
 };
 
