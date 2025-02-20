@@ -662,12 +662,11 @@
 //             <View style={styles.radio}>
 //               {radio === item.id ? <View style={styles.radioBg}></View> : null}
 //             </View>
-  
+
 //             <Text style={styles.radioText}>{item.name}</Text>
 //           </View>
 //         </TouchableOpacity>)
 //         }
-
 
 //       {/* <TouchableOpacity onPress={() => setRadio(2)}>
 //         <View style={styles.radioWrapper}>
@@ -738,44 +737,104 @@
 // Picker is used when we have multiple options to choose from
 // Switch is used when we have only 2 options to choose from
 
-
-// Dynamic Radio Button - 
+// Dynamic Radio Button -
 // Make an array of skills
 // Apply map over the radio button
 // Update the state and skill
 
 // ****************************************************************************************
 
-// Activity Indicator - Loader 
+// Activity Indicator - Loader
 
-import React, { useState } from "react";
-import { View, Text, Button, ActivityIndicator } from "react-native";  
+// import React, { useState } from "react";
+// import { View, Text, Button, ActivityIndicator } from "react-native";
+
+// const App = () => {
+
+//   const [show, setShow] = useState(false);
+//   const showLoader = () => {
+//     setShow(true);
+
+//     setTimeout(() => {
+//       setShow(false)
+//     }, 4000);
+
+//   }
+
+//   return(
+//     <View style={{alignItems: 'center', justifyContent: 'center', flex:1}}>
+//       <Text style={{fontSize: 24, color: 'red'}}>
+//         Activity Indicator - Loader
+//       </Text>
+//       <ActivityIndicator size={50} color={"blue"} animating={show}/>
+//       {
+//         show ? <ActivityIndicator size={50} color={"red"}/> : null
+//       }
+
+//       <Button title="Loader" onPress={showLoader}/>
+//     </View>
+//   )
+// }                     // In android we can adjust the size of the loader by using numbers and as well as small, medium and large but in ios we only use words and not numbers.
+
+// export default App;
+
+// **************************************************************************************
+
+// Modal in React Native - Dialog Box
+
+import React, { useState } from 'react';
+import {View, Text, Button, StyleSheet, Modal} from 'react-native';
 
 const App = () => {
 
-  const [show, setShow] = useState(false);
-  const showLoader = () => {
-    setShow(true);
+  const [ show, setShow] = useState(false)
 
-    setTimeout(() => {
-      setShow(false)
-    }, 4000);
+  return (
+    <View style={styles.main}>
+      <Modal
+      transparent={true}
+      visible={show}
+      animationType='fade'
       
-  }
-  
-  return(
-    <View style={{alignItems: 'center', justifyContent: 'center', flex:1}}>
-      <Text style={{fontSize: 24, color: 'red'}}>
-        Activity Indicator - Loader
-      </Text>
-      <ActivityIndicator size={50} color={"blue"} animating={show}/>
-      {
-        show ? <ActivityIndicator size={50} color={"red"}/> : null
-      }
-
-      <Button title="Loader" onPress={showLoader}/>
+      >
+        <View style={styles.centerView}>
+          <View style={styles.modalView}>
+            <Text style={styles.modalText}>Modal - Dialog Box</Text>
+            <Button title='CLose' onPress={()=>setShow(false)} /> 
+          </View>
+        </View>
+        </Modal>
+      <View style={styles.buttonView}>
+        <Button title="Open" onPress={()=>setShow(true)} />
+      </View>
     </View>
-  )
-}                     // In android we can adjust the size of the loader by using numbers and as well as small, medium and large but in ios we only use words and not numbers.
+  );
+};
+
+const styles = StyleSheet.create({
+  main: {
+    flex: 1,
+  },
+  buttonView: {
+    flex:1,
+    justifyContent: 'flex-end'
+  },
+  centerView:{
+    flex:1,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  modalView:{
+    backgroundColor: '#fff',
+    padding: 30,
+    borderRadius: 20,
+    shadowColor: 'black',
+    elevation: 5
+  },
+  modalText:{
+    fontSize: 30,
+    marginBottom: 20
+  }
+});
 
 export default App;
