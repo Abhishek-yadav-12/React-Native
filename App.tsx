@@ -1032,28 +1032,57 @@ const Stack = createNativeStackNavigator();
 const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Login" component={Login}></Stack.Screen>
+      <Stack.Navigator
+      screenOptions={{
+        headerStyle: {
+          backgroundColor: 'lightgreen',
+        },
+        headerTintColor: 'green', // header text color
+        headerTitleStyle: {
+          fontSize: 20,
+        },
+      }}>
+        <Stack.Screen
+          name="Login"
+          component={Login}
+          options={{
+            title: 'User Login',
+            headerStyle: {
+              backgroundColor: 'brown',
+            },
+            headerTintColor: 'white', // header text color
+            headerTitleStyle: {
+              fontSize: 20,
+            },
+          }}
+          ></Stack.Screen>
         <Stack.Screen name="Home" component={Home}></Stack.Screen>
       </Stack.Navigator>
     </NavigationContainer>
   );
 };
 
-const Home = (props) => {
+const Home = props => {
   return (
     <View style={styles.main}>
       <Text style={{fontSize: 30}}>Home Screen</Text>
-      <Button title='Go to Login Page' onPress={()=>props.navigation.navigate("Login")} />
+      <Button
+        title="Go to Login Page"
+        onPress={() => props.navigation.navigate('Login')}
+      />
     </View>
   );
 };
-const Login = (props) => {  // the props will actually show an error asking to explicitly define the type of props because it is a typescript file.
+const Login = props => {
+  // the props will actually show an error asking to explicitly define the type of props because it is a typescript file.
 
   return (
     <View style={styles.main}>
       <Text style={{fontSize: 30}}>Login Screen</Text>
-      <Button title='Go to Home Page' onPress={()=>props.navigation.navigate("Home")} />
+      <Button
+        title="Go to Home Page"
+        onPress={() => props.navigation.navigate('Home')}
+      />
     </View>
   );
 };
