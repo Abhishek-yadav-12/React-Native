@@ -903,35 +903,66 @@
 
 // Platform 
 
-import React from "react";
-import {View, Text, Button, StyleSheet, Platform} from "react-native"
+// import React from "react";
+// import {View, Text, Button, StyleSheet, Platform} from "react-native"
 
-const App = () => {
-  return(
-    <View style={styles.main}>
-      <Text style={{fontSize: 20}}>
-        Platform : {Platform.OS}
-      </Text>
-      {
-        Platform.OS === "android" ? <View style={{backgroundColor: "red", height:100, width: 100}}></View> 
-        : 
-        <View style={{backgroundColor: "green",  height:100, width: 100}} ></View>
-      }
+// const App = () => {
+//   return(
+//     <View style={styles.main}>
+//       <Text style={{fontSize: 20}}>
+//         Platform : {Platform.OS}
+//       </Text>
+//       {
+//         Platform.OS === "android" ? <View style={{backgroundColor: "red", height:100, width: 100}}></View> 
+//         : 
+//         <View style={{backgroundColor: "green",  height:100, width: 100}} ></View>
+//       }
 
-      <Text style={styles.text}>
-      {JSON.stringify(Platform.constants.reactNativeVersion)}
-      </Text>
-    </View>
-  )
-}
+//       <Text style={styles.text}>
+//       {JSON.stringify(Platform.constants.reactNativeVersion)}
+//       </Text>
+//     </View>
+//   )
+// }
 
-const styles = StyleSheet.create({
-  main:{
-    flex:1,
-  },
-  text:{
-    color: Platform.OS==="ios" ? "red" : "blue"
-  }
-})
+// const styles = StyleSheet.create({
+//   main:{
+//     flex:1,
+//   },
+//   text:{
+//     color: Platform.OS==="ios" ? "red" : "blue"
+//   }
+// })
 
-export default App;
+// export default App;
+
+// A Package is a library which consist of a bunch of codes for accessing or implementing some features.
+// Anyone can make a NPM package
+// After creating a package we can simply publish it on github or npm for others to use it as well
+
+// ***************************************************************************************
+
+// Webview
+
+// import React from "react";
+// import {View, Text, Button, StyleSheet} from "react-native"
+// import WebView from "react-native-webview";
+
+// const App = () => {
+//   return(
+//     <View style={styles.main}>
+//       <WebView
+//       source={{uri: "https://github.com/Abhishek-yadav-12"}}
+//       />
+//     </View>
+//   )
+// }
+
+// const styles = StyleSheet.create({
+//   main:{
+//     flex:1,
+//   }
+// })
+
+// export default App;
+
