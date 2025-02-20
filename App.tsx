@@ -782,31 +782,41 @@
 
 // Modal in React Native - Dialog Box
 
-import React, { useState } from 'react';
-import {View, Text, Button, StyleSheet, Modal} from 'react-native';
+import React, {useState} from 'react';
+import {View, Text, Button, StyleSheet, Modal, Pressable, Alert} from 'react-native';
 
 const App = () => {
-
-  const [ show, setShow] = useState(false)
+  const [show, setShow] = useState(false);
 
   return (
-    <View style={styles.main}>
-      <Modal
-      transparent={true}
-      visible={show}
-      animationType='fade'
-      
+    // <View style={styles.main}>
+    //   <Modal
+    //   transparent={true}
+    //   visible={show}
+    //   animationType="fade" // or slide
+
+    //   >
+    //     <View style={styles.centerView}>
+    //       <View style={styles.modalView}>
+    //         <Text style={styles.modalText}>Modal - Dialog Box</Text>
+    //         <Button title='CLose' onPress={()=>setShow(false)} />
+    //       </View>
+    //     </View>
+    //     </Modal>
+    //   <View style={styles.buttonView}>
+    //     <Button title="Open" onPress={()=>setShow(true)} />
+    //   </View>
+    // </View>
+
+    <View style={styles.main}> 
+      <Pressable
+      onPress={()=>console.warn("Press")}
+      onPressIn={()=>console.warn("Press In")}
+      onLongPress={()=>console.warn("Long Press")}
+      onPressOut={()=>console.warn("Press Out")}
       >
-        <View style={styles.centerView}>
-          <View style={styles.modalView}>
-            <Text style={styles.modalText}>Modal - Dialog Box</Text>
-            <Button title='CLose' onPress={()=>setShow(false)} /> 
-          </View>
-        </View>
-        </Modal>
-      <View style={styles.buttonView}>
-        <Button title="Open" onPress={()=>setShow(true)} />
-      </View>
+        <Text style={styles.pressable}>Pressable</Text>
+      </Pressable>
     </View>
   );
 };
@@ -814,27 +824,41 @@ const App = () => {
 const styles = StyleSheet.create({
   main: {
     flex: 1,
-  },
-  buttonView: {
-    flex:1,
-    justifyContent: 'flex-end'
-  },
-  centerView:{
-    flex:1,
     justifyContent: 'center',
     alignItems: 'center'
   },
-  modalView:{
+  buttonView: {
+    flex: 1,
+    justifyContent: 'flex-end',
+  },
+  centerView: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  modalView: {
     backgroundColor: '#fff',
     padding: 30,
     borderRadius: 20,
     shadowColor: 'black',
-    elevation: 5
+    elevation: 5,
   },
-  modalText:{
+  modalText: {
     fontSize: 30,
-    marginBottom: 20
+    marginBottom: 20,
+  },
+  pressable:{
+  color: '#fff',
+  backgroundColor: 'green',
+  padding: 10,
+  margin: 2,
+  borderRadius: 10,
+  fontSize: 20,
+  shadowColor: '#000',
+    elevation: 5
   }
 });
 
 export default App;
+
+//  We can also make our own modal without using the modal import component
