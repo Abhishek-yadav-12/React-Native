@@ -5,3 +5,4 @@ export const Header = () => {
     return( <TextInput placeholder='Enter'  placeholderTextColor={"white"} style={{color: 'white'}} />);
   };
 
+export default Header;

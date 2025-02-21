@@ -11,7 +11,7 @@ import { Text, Button , View } from "react-native";
 //   navigation: any;
 // }
 
-export const Home = (props) => {
+export const Home = (props: any) => {
     const {name,age} = props.route.params
   return (
     <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>

@@ -1022,52 +1022,99 @@
 
 // Stack Navigation
 
-import React from 'react';
-import {Button} from 'react-native';
-import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {Home} from './components/Home';
-import {Login} from './components/Login';
-import {Header} from './components/Header';
+// import React from 'react';
+// import {Button} from 'react-native';
+// import {NavigationContainer} from '@react-navigation/native';
+// import {createNativeStackNavigator} from '@react-navigation/native-stack';
+// import {Home} from './components/Home';
+// import {Login} from './components/Login';
+// import Header from './components/Header';
 
-const Stack = createNativeStackNavigator();
+// const Stack = createNativeStackNavigator();
+
+// const App = () => {
+//   const btnPress = () => {
+//     console.warn('Button Pressed!');
+//   };
+
+//   return (
+//     <NavigationContainer>
+//       <Stack.Navigator
+//         screenOptions={{
+//           headerStyle: {
+//             backgroundColor: 'lightgreen',
+//           },
+//           headerTintColor: 'green', // header text color
+//           headerTitleStyle: {
+//             fontSize: 20,
+//           },
+//         }}>
+//         <Stack.Screen
+//           name="Login"
+//           component={Login}
+//           options={{
+//             headerTitle: () => <Button onPress={btnPress} title="Left" />,
+//             headerRight: () => <Header />,
+//             title: 'User Login',
+//             headerStyle: {
+//               backgroundColor: 'brown',
+//             },
+//             headerTintColor: 'white', // header text color
+//             headerTitleStyle: {
+//               fontSize: 20,
+//             },
+//           }}></Stack.Screen>
+//         <Stack.Screen name="Home" component={Home}></Stack.Screen>
+//       </Stack.Navigator>
+//     </NavigationContainer>
+//   );
+// };
+
+
+// export default App;
+ 
+// Stack Navigation Ended
+
+// **********************************************************************************
+
+// Tab Navigation
+
+import React from "react";
+import {View, Text, Button, StyleSheet} from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+
+
+const Tab = createBottomTabNavigator();
 
 const App = () => {
-  const btnPress = () => {
-    console.warn('Button Pressed!');
-  };
+  return(
+    <View style={styles.main}>
+      <NavigationContainer>
+        <Tab.Navigator>
+          <Tab.Screen name="Login" component={Login} />
+          <Tab.Screen name="SignUp" component={SignUp} />
+        </Tab.Navigator>
+      </NavigationContainer>
+    </View>
+  )
+}
 
-  return (
-    <NavigationContainer>
-      <Stack.Navigator
-        screenOptions={{
-          headerStyle: {
-            backgroundColor: 'lightgreen',
-          },
-          headerTintColor: 'green', // header text color
-          headerTitleStyle: {
-            fontSize: 20,
-          },
-        }}>
-        <Stack.Screen
-          name="Login"
-          component={Login}
-          options={{
-            headerTitle: () => <Button onPress={btnPress} title="Left" />,
-            headerRight: () => <Header />,
-            title: 'User Login',
-            headerStyle: {
-              backgroundColor: 'brown',
-            },
-            headerTintColor: 'white', // header text color
-            headerTitleStyle: {
-              fontSize: 20,
-            },
-          }}></Stack.Screen>
-        <Stack.Screen name="Home" component={Home}></Stack.Screen>
-      </Stack.Navigator>
-    </NavigationContainer>
-  );
-};
+const Login = () => {
+  return(<View style={{flex:1, alignItems: "center", justifyContent: "center"}}>
+    <Text style={{fontSize:40 }}>Login</Text>
+  </View>)
+}
+const SignUp = () => {
+  return(<View style={{flex:1, alignItems: "center", justifyContent: "center"}}>
+    <Text style={{fontSize:40 }} >SignUp</Text>
+  </View>)
+}
+
+const styles = StyleSheet.create({
+  main:{
+    flex:1,
+  },
+})
 
 export default App;
