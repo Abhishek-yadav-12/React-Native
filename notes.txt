@@ -62,3 +62,6 @@ export default App;
 
 
 **********************
+
+
+Any framework of JS cannot directly connect to the database, so we integrate the API to connect the database

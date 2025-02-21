@@ -1070,51 +1070,102 @@
 //   );
 // };
 
-
 // export default App;
- 
+
 // Stack Navigation Ended
 
 // **********************************************************************************
 
 // Tab Navigation
 
-import React from "react";
-import {View, Text, Button, StyleSheet} from "react-native";
-import { NavigationContainer } from "@react-navigation/native";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+// To clean the cache after installation of Tab Navigation, use this command -
+//  npm start --clean-cache
+// By default we get bottom tab navigation
 
+// import React from "react";
+// import {View, Text, Button, StyleSheet} from "react-native";
+// import { NavigationContainer } from "@react-navigation/native";
+// import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+// import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
+// import { Home } from "./components/Home";
 
-const Tab = createBottomTabNavigator();
+// // const Tab = createBottomTabNavigator();
+// const Tab = createMaterialTopTabNavigator();
+
+// const App = () => {
+//   return(
+//     <View style={styles.main}>
+//       <NavigationContainer>
+//         <Tab.Navigator>
+//           <Tab.Screen name="Login" component={Login} />
+//           <Tab.Screen name="SignUp" component={SignUp} />
+//           <Tab.Screen name="Home" component={Home} />
+//         </Tab.Navigator>
+//       </NavigationContainer>
+//     </View>
+//   )
+// }
+
+// const Login = () => {
+//   return(<View style={{flex:1, alignItems: "center", justifyContent: "center"}}>
+//     <Text style={{fontSize:40 }}>Login</Text>
+//   </View>)
+// }
+// const SignUp = () => {
+//   return(<View style={{flex:1, alignItems: "center", justifyContent: "center"}}>
+//     <Text style={{fontSize:40 }} >SignUp</Text>
+//   </View>)
+// }
+
+// const styles = StyleSheet.create({
+//   main:{
+//     flex:1,
+//   },
+// })
+
+// export default App;
+
+// *****************************************************************************************
+
+// API Call
+
+import React, {useEffect, useState} from 'react';
+import {View, Text, StyleSheet} from 'react-native';
 
 const App = () => {
-  return(
-    <View style={styles.main}>
-      <NavigationContainer>
-        <Tab.Navigator>
-          <Tab.Screen name="Login" component={Login} />
-          <Tab.Screen name="SignUp" component={SignUp} />
-        </Tab.Navigator>
-      </NavigationContainer>
-    </View>
-  )
-}
 
-const Login = () => {
-  return(<View style={{flex:1, alignItems: "center", justifyContent: "center"}}>
-    <Text style={{fontSize:40 }}>Login</Text>
-  </View>)
-}
-const SignUp = () => {
-  return(<View style={{flex:1, alignItems: "center", justifyContent: "center"}}>
-    <Text style={{fontSize:40 }} >SignUp</Text>
-  </View>)
-}
+  const [data, setData] = useState(null);
+
+  const getData = async () => {
+    const url = 'https://jsonplaceholder.typicode.com/posts/1';
+    let result = await fetch(url);
+    let final = await result.json();
+    setData(final)
+  }
+  
+  useEffect(() => {
+    getData();
+  }, [])
+
+  return (
+    <View style={styles.main}>
+      <Text style={{fontSize: 24}}>API Call</Text>
+      {
+        data ? <View>
+          <Text>{data.id}</Text>
+          <Text>{data.userId}</Text>
+          <Text>{data.title}</Text>
+          <Text>{data.body}</Text>
+        </View> : null
+      }
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
-  main:{
-    flex:1,
+  main: {
+    flex: 1,
   },
-})
+});
 
 export default App;
