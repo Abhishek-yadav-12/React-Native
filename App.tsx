@@ -1131,7 +1131,7 @@
 // TO render the data which we'll get in the json format , we'll use the map function and show it in the list
 
 import React, {useEffect, useState} from 'react';
-import {View, Text, StyleSheet, ScrollView} from 'react-native';
+import {View, Text, StyleSheet, ScrollView, FlatList} from 'react-native';
 
 const App = () => {
   const [data, setData] = useState<any>(null);
@@ -1153,13 +1153,37 @@ const App = () => {
     getData();
   }, []);
 
+  
   return (
-    <ScrollView>
-      <View style={styles.main}>
+    // <ScrollView>
+// Instead of just making a list manually we can use FlatList and then we don't even need to use ScrollView
+<FlatList
+ data={data}
+ renderItem={(item)=><View style={styles.main}>
+ <Text style={{fontSize: 24}}>API Call</Text>
+ {data && data.length ? data.map((item: any) => (
+       <View
+       // key={item}
+         style={{
+           padding: 10,
+           borderBottomColor: 'grey',
+           borderBottomWidth: 1,
+         }}>
+         <Text style={{fontSize: 20, backgroundColor: 'orange'}}>
+           Id: {item.id}
+         </Text>
+         <Text style={{fontSize: 20}}>Title: {item.title}</Text>
+         <Text style={{fontSize: 20}}>Body: {item.body}</Text>
+       </View>
+     ))
+   : null}
+</View>}
+ >
+      {/* <View style={styles.main}>
         <Text style={{fontSize: 24}}>API Call</Text>
         {data && data.length ? data.map((item: any) => (
               <View
-              key={item}
+              // key={item}
                 style={{
                   padding: 10,
                   borderBottomColor: 'grey',
@@ -1173,8 +1197,9 @@ const App = () => {
               </View>
             ))
           : null}
-      </View>
-    </ScrollView>
+      </View> */}
+      </FlatList>
+    // </ScrollView>
   );
 };
 
