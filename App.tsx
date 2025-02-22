@@ -1163,7 +1163,7 @@ const App = () => {
  <Text style={{fontSize: 24}}>API Call</Text>
  {data && data.length ? data.map((item: any) => (
        <View
-       // key={item}
+       key={item.id}
          style={{
            padding: 10,
            borderBottomColor: 'grey',
@@ -1210,3 +1210,13 @@ const styles = StyleSheet.create({
 });
 
 export default App;
+
+
+// *****************************************************************************************
+
+// API with JSon Server
+
+// To create an api we use json-server 
+// npm install -g json-server 
+// json-server --watch db.json ---> TO start the server ------> here db.json is the name of the file where we have stored the data in the form of objects
+// db.json is the file where we store the data
