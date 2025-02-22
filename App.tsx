@@ -1128,40 +1128,53 @@
 // *****************************************************************************************
 
 // API Call
+// TO render the data which we'll get in the json format , we'll use the map function and show it in the list
 
 import React, {useEffect, useState} from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, ScrollView} from 'react-native';
 
 const App = () => {
-
   const [data, setData] = useState<any>(null);
 
   // IMPORTANT - here I have specified the type of data in useState as any so that It doesn't shwo any error
 
   const getData = async () => {
-    const url = 'https://jsonplaceholder.typicode.com/posts/1';
+    // const url = 'https://jsonplaceholder.typicode.com/posts/1'; // This is the url of the API
+    const url = 'https://jsonplaceholder.typicode.com/posts/';
     let result = await fetch(url);
-    let final = await result.json();
-    setData(final)
-  }
-  
+    result = await result.json();
+    setData(result);
+  };
+
+  // We use useEffect hook to call the API when the component is mounted for the first time
+  // Lifecycle methods are used in class components but in functional components we use useEffect hook
+
   useEffect(() => {
     getData();
-  }, [])
+  }, []);
 
   return (
-    <View style={styles.main}>
-      <Text style={{fontSize: 24}}>API Call</Text>
-      {
-        data ? <View>
-          <Text>I am calling the data using an API</Text>
-          <Text>{data.id}</Text>
-          <Text>{data.userId}</Text>
-          <Text>{data.title}</Text>
-          <Text>{data.body}</Text>
-        </View> : null
-      }
-    </View>
+    <ScrollView>
+      <View style={styles.main}>
+        <Text style={{fontSize: 24}}>API Call</Text>
+        {data && data.length ? data.map((item: any) => (
+              <View
+              key={item}
+                style={{
+                  padding: 10,
+                  borderBottomColor: 'grey',
+                  borderBottomWidth: 1,
+                }}>
+                <Text style={{fontSize: 20, backgroundColor: 'lightgrey'}}>
+                  Id: {item.id}
+                </Text>
+                <Text style={{fontSize: 20}}>Title: {item.title}</Text>
+                <Text style={{fontSize: 20}}>Body: {item.body}</Text>
+              </View>
+            ))
+          : null}
+      </View>
+    </ScrollView>
   );
 };
 
@@ -1172,5 +1185,3 @@ const styles = StyleSheet.create({
 });
 
 export default App;
-
-
