@@ -1134,7 +1134,9 @@ import {View, Text, StyleSheet} from 'react-native';
 
 const App = () => {
 
-  const [data, setData] = useState(null);
+  const [data, setData] = useState<any>(null);
+
+  // IMPORTANT - here I have specified the type of data in useState as any so that It doesn't shwo any error
 
   const getData = async () => {
     const url = 'https://jsonplaceholder.typicode.com/posts/1';
@@ -1152,6 +1154,7 @@ const App = () => {
       <Text style={{fontSize: 24}}>API Call</Text>
       {
         data ? <View>
+          <Text>I am calling the data using an API</Text>
           <Text>{data.id}</Text>
           <Text>{data.userId}</Text>
           <Text>{data.title}</Text>
@@ -1169,3 +1172,5 @@ const styles = StyleSheet.create({
 });
 
 export default App;
+
+
