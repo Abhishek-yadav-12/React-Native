@@ -1228,34 +1228,41 @@
 // DELETE - To delete the data
 
 
-import React from "react";
-import {View, Text, Button, StyleSheet} from "react-native"
+import React, { useState } from "react";
+import {View, Text, Button, StyleSheet, TextInput} from "react-native"
 
 const App = () => {
 
   const saveData = async () => {
 
-    const data = {
-      name: "Shyam",
-      age: 21,
-      email: "shyam@gmail.com"
-    }
+    // const data = {
+      // name: "Shyam",       // This is a static Data 
+    //   age: 21,
+    //   email: "shyam@gmail.com"
+    // }
 
     const url = "http://10.0.2.2:3000/users";
     let result = await fetch(url, {
       method: "POST",
       headers:{
         'Content-Type': 'application/json'},
-        body: JSON.stringify(data)
+        body: JSON.stringify({name:name, age:age, email:email})
     })
     result = await result.json();
     console.warn("Data Saved", result);
     
   }
 
+  const [name, setName] = useState("");
+  const [age, setAge] = useState("");
+  const [email, setEmail] = useState("");
+
   return(
     <View style={styles.main}>
-    <Text style={{fontSize:24}}>API Call</Text>
+    <Text style={{fontSize:24, color: "blue", margin: 5}}>API Call</Text>
+    <TextInput placeholder="Enter Name" value={name} onChangeText={(text)=>setName(text)} style={{fontSize:20, borderWidth:1}}/>
+    <TextInput placeholder="Enter Age" value={age} onChangeText={(text)=>setAge(text)} style={{fontSize:20, borderWidth:1}}/>
+    <TextInput placeholder="Enter Email" value={email} onChangeText={(text)=>setEmail(text)} style={{fontSize:20, borderWidth:1}}/>
     <Button title="Save Data" onPress={saveData}/>
     </View>
   )
@@ -1264,6 +1271,7 @@ const App = () => {
 const styles = StyleSheet.create({
   main:{
     flex:1,
+    margin:10
   }
 })
 
