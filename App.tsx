@@ -1154,7 +1154,6 @@
 //     getData();
 //   }, []);
 
-  
 //   return (
 //     // <ScrollView>
 // // Instead of just making a list manually we can use FlatList and then we don't even need to use ScrollView
@@ -1212,13 +1211,12 @@
 
 // export default App;
 
-
 // *****************************************************************************************
 
 // API with JSon Server
 
-// To create an api we use json-server 
-// npm install -g json-server 
+// To create an api we use json-server
+// npm install -g json-server
 // json-server --watch db.json ---> TO start the server ------> here db.json is the name of the file where we have stored the data in the form of objects
 // db.json is the file where we store the data
 
@@ -1227,52 +1225,98 @@
 // PUT - To edit the data
 // DELETE - To delete the data
 
-
-import React, { useState } from "react";
-import {View, Text, Button, StyleSheet, TextInput} from "react-native"
+import React, {useState} from 'react';
+import {View, Text, Button, StyleSheet, TextInput} from 'react-native';
 
 const App = () => {
+  const [name, setName] = useState('');
+  const [age, setAge] = useState('');
+  const [email, setEmail] = useState('');
+
+  const [nameError, setNameError] = useState(false);
+  const [ageError, setAgeError] = useState(false);
+  const [emailError, setEmailError] = useState(false);
 
   const saveData = async () => {
-
     // const data = {
-      // name: "Shyam",       // This is a static Data 
+    // name: "Shyam",       // This is a static Data
     //   age: 21,
     //   email: "shyam@gmail.com"
     // }
 
-    const url = "http://10.0.2.2:3000/users";
+    !name ? setNameError(true) : setNameError(false);
+    !age ? setAgeError(true) : setAgeError(false);
+    !email ? setEmailError(true) : setEmailError(false);
+
+    // if (!name) {
+    //   setNameError(true);
+    // } else {
+    //   setNameError(false);
+    // }
+    // if (!age) {
+    //   setAgeError(true);
+    // } else {
+    //   setAgeError(false);
+    // }
+    // if (!email) {
+    //   setEmailError(true);
+    // } else {
+    //   setEmailError(false);
+    // }
+    if (!name || !age || !email) {
+      return false;
+    }
+
+    const url = 'http://10.0.2.2:3000/users';
     let result = await fetch(url, {
-      method: "POST",
-      headers:{
-        'Content-Type': 'application/json'},
-        body: JSON.stringify({name:name, age:age, email:email})
-    })
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({name: name, age: age, email: email}),
+    });
     result = await result.json();
-    console.warn("Data Saved", result);
-    
-  }
+    if (result) {
+      console.warn('Data is Added!');
+    }
+  };
 
-  const [name, setName] = useState("");
-  const [age, setAge] = useState("");
-  const [email, setEmail] = useState("");
-
-  return(
+  return (
     <View style={styles.main}>
-    <Text style={{fontSize:24, color: "blue", margin: 5}}>API Call</Text>
-    <TextInput placeholder="Enter Name" value={name} onChangeText={(text)=>setName(text)} style={{fontSize:20, borderWidth:1}}/>
-    <TextInput placeholder="Enter Age" value={age} onChangeText={(text)=>setAge(text)} style={{fontSize:20, borderWidth:1}}/>
-    <TextInput placeholder="Enter Email" value={email} onChangeText={(text)=>setEmail(text)} style={{fontSize:20, borderWidth:1}}/>
-    <Button title="Save Data" onPress={saveData}/>
+      <Text style={{fontSize: 24, color: 'blue', margin: 5}}>API Call</Text>
+      <TextInput
+        placeholder="Enter Name"
+        value={name}
+        onChangeText={text => setName(text)}
+        style={{fontSize: 20, borderWidth: 1}}
+      />
+      {nameError ? <Text style={{color: 'red'}}>Please Enter Name</Text> : null}
+      <TextInput
+        placeholder="Enter Age"
+        value={age}
+        onChangeText={text => setAge(text)}
+        style={{fontSize: 20, borderWidth: 1}}
+      />
+      {ageError ? <Text style={{color: 'red'}}>Please Enter Age</Text> : null}
+      <TextInput
+        placeholder="Enter Email"
+        value={email}
+        onChangeText={text => setEmail(text)}
+        style={{fontSize: 20, borderWidth: 1}}
+      />
+      {emailError ? (
+        <Text style={{color: 'red'}}>Please Enter Email</Text>
+      ) : null}
+      <Button title="Save Data" onPress={saveData} />
     </View>
-  )
-}
+  );
+};
 
 const styles = StyleSheet.create({
-  main:{
-    flex:1,
-    margin:10
-  }
-})
+  main: {
+    flex: 1,
+    margin: 10,
+  },
+});
 
 export default App;
