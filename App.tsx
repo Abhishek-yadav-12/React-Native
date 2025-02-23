@@ -1141,6 +1141,7 @@ const App = () => {
   const getData = async () => {
     // const url = 'https://jsonplaceholder.typicode.com/posts/1'; // This is the url of the API
     const url = 'https://jsonplaceholder.typicode.com/posts/';
+    // const url = 'http://localhost:3000/users';
     let result = await fetch(url);
     result = await result.json();
     setData(result);
@@ -1220,3 +1221,8 @@ export default App;
 // npm install -g json-server 
 // json-server --watch db.json ---> TO start the server ------> here db.json is the name of the file where we have stored the data in the form of objects
 // db.json is the file where we store the data
+
+// GET - To show the data
+// POST - To add the data
+// PUT - To edit the data
+// DELETE - To delete the data
