@@ -1130,87 +1130,87 @@
 // API Call
 // TO render the data which we'll get in the json format , we'll use the map function and show it in the list
 
-import React, {useEffect, useState} from 'react';
-import {View, Text, StyleSheet, ScrollView, FlatList} from 'react-native';
+// import React, {useEffect, useState} from 'react';
+// import {View, Text, StyleSheet, ScrollView, FlatList} from 'react-native';
 
-const App = () => {
-  const [data, setData] = useState<any>(null);
+// const App = () => {
+//   const [data, setData] = useState<any>(null);
 
-  // IMPORTANT - here I have specified the type of data in useState as any so that It doesn't shwo any error
+//   // IMPORTANT - here I have specified the type of data in useState as any so that It doesn't shwo any error
 
-  const getData = async () => {
-    // const url = 'https://jsonplaceholder.typicode.com/posts/1'; // This is the url of the API
-    const url = 'https://jsonplaceholder.typicode.com/posts/';
-    // const url = 'http://localhost:3000/users';
-    let result = await fetch(url);
-    result = await result.json();
-    setData(result);
-  };
+//   const getData = async () => {
+//     // const url = 'https://jsonplaceholder.typicode.com/posts/1'; // This is the url of the API
+//     const url = 'https://jsonplaceholder.typicode.com/posts/';
+//     // const url = 'http://localhost:3000/users';
+//     let result = await fetch(url);
+//     result = await result.json();
+//     setData(result);
+//   };
 
-  // We use useEffect hook to call the API when the component is mounted for the first time
-  // Lifecycle methods are used in class components but in functional components we use useEffect hook
+//   // We use useEffect hook to call the API when the component is mounted for the first time
+//   // Lifecycle methods are used in class components but in functional components we use useEffect hook
 
-  useEffect(() => {
-    getData();
-  }, []);
+//   useEffect(() => {
+//     getData();
+//   }, []);
 
   
-  return (
-    // <ScrollView>
-// Instead of just making a list manually we can use FlatList and then we don't even need to use ScrollView
-<FlatList
- data={data}
- renderItem={(item)=><View style={styles.main}>
- <Text style={{fontSize: 24}}>API Call</Text>
- {data && data.length ? data.map((item: any) => (
-       <View
-       key={item.id}
-         style={{
-           padding: 10,
-           borderBottomColor: 'grey',
-           borderBottomWidth: 1,
-         }}>
-         <Text style={{fontSize: 20, backgroundColor: 'orange'}}>
-           Id: {item.id}
-         </Text>
-         <Text style={{fontSize: 20}}>Title: {item.title}</Text>
-         <Text style={{fontSize: 20}}>Body: {item.body}</Text>
-       </View>
-     ))
-   : null}
-</View>}
- >
-      {/* <View style={styles.main}>
-        <Text style={{fontSize: 24}}>API Call</Text>
-        {data && data.length ? data.map((item: any) => (
-              <View
-              // key={item}
-                style={{
-                  padding: 10,
-                  borderBottomColor: 'grey',
-                  borderBottomWidth: 1,
-                }}>
-                <Text style={{fontSize: 20, backgroundColor: 'lightgrey'}}>
-                  Id: {item.id}
-                </Text>
-                <Text style={{fontSize: 20}}>Title: {item.title}</Text>
-                <Text style={{fontSize: 20}}>Body: {item.body}</Text>
-              </View>
-            ))
-          : null}
-      </View> */}
-      </FlatList>
-    // </ScrollView>
-  );
-};
+//   return (
+//     // <ScrollView>
+// // Instead of just making a list manually we can use FlatList and then we don't even need to use ScrollView
+// <FlatList
+//  data={data}
+//  renderItem={(item)=><View style={styles.main}>
+//  <Text style={{fontSize: 24}}>API Call</Text>
+//  {data && data.length ? data.map((item: any) => (
+//        <View
+//        key={item.id}
+//          style={{
+//            padding: 10,
+//            borderBottomColor: 'grey',
+//            borderBottomWidth: 1,
+//          }}>
+//          <Text style={{fontSize: 20, backgroundColor: 'orange'}}>
+//            Id: {item.id}
+//          </Text>
+//          <Text style={{fontSize: 20}}>Title: {item.title}</Text>
+//          <Text style={{fontSize: 20}}>Body: {item.body}</Text>
+//        </View>
+//      ))
+//    : null}
+// </View>}
+//  >
+//       {/* <View style={styles.main}>
+//         <Text style={{fontSize: 24}}>API Call</Text>
+//         {data && data.length ? data.map((item: any) => (
+//               <View
+//               // key={item}
+//                 style={{
+//                   padding: 10,
+//                   borderBottomColor: 'grey',
+//                   borderBottomWidth: 1,
+//                 }}>
+//                 <Text style={{fontSize: 20, backgroundColor: 'lightgrey'}}>
+//                   Id: {item.id}
+//                 </Text>
+//                 <Text style={{fontSize: 20}}>Title: {item.title}</Text>
+//                 <Text style={{fontSize: 20}}>Body: {item.body}</Text>
+//               </View>
+//             ))
+//           : null}
+//       </View> */}
+//       </FlatList>
+//     // </ScrollView>
+//   );
+// };
 
-const styles = StyleSheet.create({
-  main: {
-    flex: 1,
-  },
-});
+// const styles = StyleSheet.create({
+//   main: {
+//     flex: 1,
+//   },
+// });
 
-export default App;
+// export default App;
 
 
 // *****************************************************************************************
@@ -1226,3 +1226,45 @@ export default App;
 // POST - To add the data
 // PUT - To edit the data
 // DELETE - To delete the data
+
+
+import React from "react";
+import {View, Text, Button, StyleSheet} from "react-native"
+
+const App = () => {
+
+  const saveData = async () => {
+
+    const data = {
+      name: "Shyam",
+      age: 21,
+      email: "shyam@gmail.com"
+    }
+
+    const url = "http://10.0.2.2:3000/users";
+    let result = await fetch(url, {
+      method: "POST",
+      headers:{
+        'Content-Type': 'application/json'},
+        body: JSON.stringify(data)
+    })
+    result = await result.json();
+    console.warn("Data Saved", result);
+    
+  }
+
+  return(
+    <View style={styles.main}>
+    <Text style={{fontSize:24}}>API Call</Text>
+    <Button title="Save Data" onPress={saveData}/>
+    </View>
+  )
+}
+
+const styles = StyleSheet.create({
+  main:{
+    flex:1,
+  }
+})
+
+export default App;
