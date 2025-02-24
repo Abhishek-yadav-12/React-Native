@@ -1323,6 +1323,7 @@
 
 import React, {useEffect, useState} from 'react';
 import {View, Text, Button, StyleSheet} from 'react-native';
+import { Int32 } from 'react-native/Libraries/Types/CodegenTypes';
 
 const App = () => {
   const [data, setData] = useState([]);
@@ -1336,6 +1337,18 @@ const App = () => {
       setData(answer);
     }
   };
+
+  const deleteUser = async(id: any) => {
+    const url = "http://10.0.2.2:3000/users";
+    let result = await fetch(`${url}/${id}`,{
+      method: "delete"
+    });
+    result = await result.json();
+    if(result){
+      console.warn("User Deleted!!");
+      getData();
+    }
+  }
 
   useEffect(() => {
     getData();
@@ -1351,7 +1364,7 @@ const App = () => {
         <View style={{flex: 1}}>
           <Text style={{fontWeight:"bold", fontSize:18}}>Name</Text>
         </View>
-        <View style={{flex: 2}}>
+        <View style={{flex: 1.5}}>
           <Text style={{fontWeight:"bold", fontSize:18}}>Age</Text>
         </View>
         <View style={{flex: 2}}>
@@ -1369,10 +1382,10 @@ const App = () => {
                 <Text style={styles.text}>{item.age}</Text>
               </View>
               {/* <View style={{flex:1}}><Text>{item.email}</Text></View> */}
-              <View style={{flex: 1}}>
-                <Button title="Delete" />
+              <View style={{flex: 1, margin:3}}>
+                <Button title="Delete" onPress={()=>deleteUser(item.id)} />
               </View>
-              <View style={{flex: 1}}>
+              <View style={{flex: 1, margin:3}}>
                 <Button title="Update" />
               </View>
             </View>
