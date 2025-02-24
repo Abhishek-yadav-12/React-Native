@@ -1322,11 +1322,13 @@
 // export default App;
 
 import React, {useEffect, useState} from 'react';
-import {View, Text, Button, StyleSheet} from 'react-native';
-import { Int32 } from 'react-native/Libraries/Types/CodegenTypes';
+import {View, Text, Button, StyleSheet, Modal} from 'react-native';
+
 
 const App = () => {
   const [data, setData] = useState([]);
+  const [showModal, setShowModal] = useState(false);
+  const [selectedUser, setSelectedUser] = useState(undefined);
 
   const getData = async () => {
     const url = 'http://10.0.2.2:3000/users';
@@ -1348,6 +1350,11 @@ const App = () => {
       console.warn("User Deleted!!");
       getData();
     }
+  }
+
+  const updateUser = (data: any) =>{
+    setShowModal(true);
+    setSelectedUser(data);
   }
 
   useEffect(() => {
@@ -1386,14 +1393,28 @@ const App = () => {
                 <Button title="Delete" onPress={()=>deleteUser(item.id)} />
               </View>
               <View style={{flex: 1, margin:3}}>
-                <Button title="Update" />
+                <Button title="Update" onPress={()=>updateUser(item)}/>
               </View>
             </View>
           ))
         : null}
+        <Modal
+        transparent={true}
+        visible={showModal}>
+          <UserModal selectedUser={selectedUser} setShowModal={setShowModal} />
+        </Modal>
     </View>
   );
 };
+
+const UserModal =(props: any)=>{
+  return(<View style={styles.centeredView}>
+    <View style={styles.modalView}>
+      <Text style={{fontSize: 20, margin:10}}>{props.selectedUser.name}</Text>
+      <Button title='Close' onPress={() => props.setShowModal(false)} />
+    </View>
+  </View>)
+}
 
 const styles = StyleSheet.create({
   main: {
@@ -1408,7 +1429,19 @@ const styles = StyleSheet.create({
   },
   text:{
     fontSize: 15
+  },
+  centeredView:{
+    flex:1,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  modalView:{
+    backgroundColor: '#fff',
+    padding: 60,
+    margin: 20,
+    borderRadius: 10
   }
+
 });
 
 export default App;
