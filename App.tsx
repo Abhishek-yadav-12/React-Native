@@ -1225,89 +1225,159 @@
 // PUT - To edit the data
 // DELETE - To delete the data
 
-import React, {useState} from 'react';
-import {View, Text, Button, StyleSheet, TextInput} from 'react-native';
+// import React, {useState} from 'react';
+// import {View, Text, Button, StyleSheet, TextInput} from 'react-native';
+
+// const App = () => {
+//   const [name, setName] = useState('');
+//   const [age, setAge] = useState('');
+//   const [email, setEmail] = useState('');
+
+//   const [nameError, setNameError] = useState(false);
+//   const [ageError, setAgeError] = useState(false);
+//   const [emailError, setEmailError] = useState(false);
+
+//   const saveData = async () => {
+//     // const data = {
+//     // name: "Shyam",       // This is a static Data
+//     //   age: 21,
+//     //   email: "shyam@gmail.com"
+//     // }
+
+//     !name ? setNameError(true) : setNameError(false);
+//     !age ? setAgeError(true) : setAgeError(false);
+//     !email ? setEmailError(true) : setEmailError(false);
+
+//     // if (!name) {
+//     //   setNameError(true);
+//     // } else {
+//     //   setNameError(false);
+//     // }
+//     // if (!age) {
+//     //   setAgeError(true);
+//     // } else {
+//     //   setAgeError(false);
+//     // }
+//     // if (!email) {
+//     //   setEmailError(true);
+//     // } else {
+//     //   setEmailError(false);
+//     // }
+//     if (!name || !age || !email) {
+//       return false;
+//     }
+
+//     const url = 'http://10.0.2.2:3000/users';
+//     let result = await fetch(url, {
+//       method: 'POST',
+//       headers: {
+//         'Content-Type': 'application/json',
+//       },
+//       body: JSON.stringify({name: name, age: age, email: email}),
+//     });
+//     result = await result.json();
+//     if (result) {
+//       console.warn('Data is Added!');
+//     }
+//   };
+
+//   return (
+//     <View style={styles.main}>
+//       <Text style={{fontSize: 24, color: 'blue', margin: 5}}>API Call</Text>
+//       <TextInput
+//         placeholder="Enter Name"
+//         value={name}
+//         onChangeText={text => setName(text)}
+//         style={{fontSize: 20, borderWidth: 1}}
+//       />
+//       {nameError ? <Text style={{color: 'red'}}>Please Enter Name</Text> : null}
+//       <TextInput
+//         placeholder="Enter Age"
+//         value={age}
+//         onChangeText={text => setAge(text)}
+//         style={{fontSize: 20, borderWidth: 1}}
+//       />
+//       {ageError ? <Text style={{color: 'red'}}>Please Enter Age</Text> : null}
+//       <TextInput
+//         placeholder="Enter Email"
+//         value={email}
+//         onChangeText={text => setEmail(text)}
+//         style={{fontSize: 20, borderWidth: 1}}
+//       />
+//       {emailError ? (
+//         <Text style={{color: 'red'}}>Please Enter Email</Text>
+//       ) : null}
+//       <Button title="Save Data" onPress={saveData} />
+//     </View>
+//   );
+// };
+
+// const styles = StyleSheet.create({
+//   main: {
+//     flex: 1,
+//     margin: 10,
+//   },
+// });
+
+// export default App;
+
+import React, {useEffect, useState} from 'react';
+import {View, Text, Button, StyleSheet} from 'react-native';
 
 const App = () => {
-  const [name, setName] = useState('');
-  const [age, setAge] = useState('');
-  const [email, setEmail] = useState('');
+  const [data, setData] = useState([]);
 
-  const [nameError, setNameError] = useState(false);
-  const [ageError, setAgeError] = useState(false);
-  const [emailError, setEmailError] = useState(false);
-
-  const saveData = async () => {
-    // const data = {
-    // name: "Shyam",       // This is a static Data
-    //   age: 21,
-    //   email: "shyam@gmail.com"
-    // }
-
-    !name ? setNameError(true) : setNameError(false);
-    !age ? setAgeError(true) : setAgeError(false);
-    !email ? setEmailError(true) : setEmailError(false);
-
-    // if (!name) {
-    //   setNameError(true);
-    // } else {
-    //   setNameError(false);
-    // }
-    // if (!age) {
-    //   setAgeError(true);
-    // } else {
-    //   setAgeError(false);
-    // }
-    // if (!email) {
-    //   setEmailError(true);
-    // } else {
-    //   setEmailError(false);
-    // }
-    if (!name || !age || !email) {
-      return false;
-    }
-
+  const getData = async () => {
     const url = 'http://10.0.2.2:3000/users';
-    let result = await fetch(url, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({name: name, age: age, email: email}),
-    });
-    result = await result.json();
-    if (result) {
-      console.warn('Data is Added!');
+    let result = await fetch(url);
+    let answer = await result.json();
+    console.warn(answer);
+    if (answer) {
+      setData(answer);
     }
   };
 
+  useEffect(() => {
+    getData();
+  }, []);
+
   return (
     <View style={styles.main}>
-      <Text style={{fontSize: 24, color: 'blue', margin: 5}}>API Call</Text>
-      <TextInput
-        placeholder="Enter Name"
-        value={name}
-        onChangeText={text => setName(text)}
-        style={{fontSize: 20, borderWidth: 1}}
-      />
-      {nameError ? <Text style={{color: 'red'}}>Please Enter Name</Text> : null}
-      <TextInput
-        placeholder="Enter Age"
-        value={age}
-        onChangeText={text => setAge(text)}
-        style={{fontSize: 20, borderWidth: 1}}
-      />
-      {ageError ? <Text style={{color: 'red'}}>Please Enter Age</Text> : null}
-      <TextInput
-        placeholder="Enter Email"
-        value={email}
-        onChangeText={text => setEmail(text)}
-        style={{fontSize: 20, borderWidth: 1}}
-      />
-      {emailError ? (
-        <Text style={{color: 'red'}}>Please Enter Email</Text>
-      ) : null}
-      <Button title="Save Data" onPress={saveData} />
+      <View style={{flexDirection: 'row',
+    backgroundColor: 'skyblue',
+    justifyContent: 'space-around',
+    margin: 5,
+    padding: 5}}>
+        <View style={{flex: 1}}>
+          <Text style={{fontWeight:"bold", fontSize:18}}>Name</Text>
+        </View>
+        <View style={{flex: 2}}>
+          <Text style={{fontWeight:"bold", fontSize:18}}>Age</Text>
+        </View>
+        <View style={{flex: 2}}>
+          <Text style={{fontWeight:"bold", fontSize:18}}>Operations</Text>
+        </View>
+      </View>
+
+      {data.length
+        ? data.map((item: any) => (
+            <View style={styles.dataWrapper} key={item.id}>
+              <View style={{flex: 1}}>
+                <Text style={styles.text}>{item.name}</Text>
+              </View>
+              <View style={{flex: 1}}>
+                <Text style={styles.text}>{item.age}</Text>
+              </View>
+              {/* <View style={{flex:1}}><Text>{item.email}</Text></View> */}
+              <View style={{flex: 1}}>
+                <Button title="Delete" />
+              </View>
+              <View style={{flex: 1}}>
+                <Button title="Update" />
+              </View>
+            </View>
+          ))
+        : null}
     </View>
   );
 };
@@ -1315,8 +1385,17 @@ const App = () => {
 const styles = StyleSheet.create({
   main: {
     flex: 1,
-    margin: 10,
   },
+  dataWrapper: {
+    flexDirection: 'row',
+    backgroundColor: 'lightgrey',
+    justifyContent: 'space-around',
+    margin: 5,
+    padding: 5,
+  },
+  text:{
+    fontSize: 15
+  }
 });
 
 export default App;
