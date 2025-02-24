@@ -1401,7 +1401,7 @@ const App = () => {
         <Modal
         transparent={true}
         visible={showModal}>
-          <UpdateModal selectedUser={selectedUser} setShowModal={setShowModal} />
+          <UpdateModal selectedUser={selectedUser} setShowModal={setShowModal} getData = {getData}/>
         </Modal>
     </View>
   );
@@ -1412,9 +1412,9 @@ const App = () => {
 const UpdateModal =(props: any)=>{
   console.warn(props.selectedUser);
   
-  const [name, setName] = useState(undefined);
-  const [age, setAge] = useState(undefined);
-  const [email, setEmail] = useState(undefined);
+  const [name, setName] = useState('');
+  const [age, setAge] = useState('');
+  const [email, setEmail] = useState('');
 
   useEffect(()=>{
     if(props.selectedUser){
@@ -1424,12 +1424,29 @@ const UpdateModal =(props: any)=>{
     }
   },[props.selectedUser])
 
+  const UpdateUser =async ()=>{
+    console.warn(name, age, email, props.selectedUser.id);
+    const url = "http://10.0.2.2:3000/users";
+    let result= await fetch(`${url}/${props.selectedUser.id}`,{
+      method: "PUT",
+      headers:{
+        "Content-Type":"application/json"
+      },
+      body:JSON.stringify({name, age, email})
+    });
+    result = await result.json();
+    if(result){
+      console.warn("User Updated!!");
+      props.getData();
+      props.setShowModal(false);  
+  }
+  }
   return(<View style={styles.centeredView}>
     <View style={styles.modalView}>
-      <TextInput style={styles.input}>{props.selectedUser.name}</TextInput>
-      <TextInput style={styles.input}>{props.selectedUser.age}</TextInput>
-      <TextInput style={styles.input}>{props.selectedUser.email}</TextInput>
-      <View style={{marginBottom:10}}><Button title='Update' /></View>
+      <TextInput style={styles.input} value={name} onChangeText={(text)=>setName(text)}/>
+      <TextInput style={styles.input} value={age}  onChangeText={(text)=>setAge(text)}/>
+      <TextInput style={styles.input} value={email} onChangeText={(text)=>setEmail(text)}/>
+      <View style={{marginBottom:10}}><Button title='Save' onPress={UpdateUser}/></View>
       <View style={{}}><Button title='Close' onPress={() => props.setShowModal(false)} /></View>
     </View>
   </View>)
