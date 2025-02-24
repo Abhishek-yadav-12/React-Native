@@ -1322,7 +1322,7 @@
 // export default App;
 
 import React, {useEffect, useState} from 'react';
-import {View, Text, Button, StyleSheet, Modal} from 'react-native';
+import {View, Text, Button, StyleSheet, Modal, TextInput} from 'react-native';
 
 
 const App = () => {
@@ -1401,17 +1401,36 @@ const App = () => {
         <Modal
         transparent={true}
         visible={showModal}>
-          <UserModal selectedUser={selectedUser} setShowModal={setShowModal} />
+          <UpdateModal selectedUser={selectedUser} setShowModal={setShowModal} />
         </Modal>
     </View>
   );
 };
 
-const UserModal =(props: any)=>{
+
+
+const UpdateModal =(props: any)=>{
+  console.warn(props.selectedUser);
+  
+  const [name, setName] = useState(undefined);
+  const [age, setAge] = useState(undefined);
+  const [email, setEmail] = useState(undefined);
+
+  useEffect(()=>{
+    if(props.selectedUser){
+      setName(props.selectedUser.name);
+      setEmail(props.selectedUser.email);
+      setAge(props.selectedUser.age.toString());
+    }
+  },[props.selectedUser])
+
   return(<View style={styles.centeredView}>
     <View style={styles.modalView}>
-      <Text style={{fontSize: 20, margin:10}}>{props.selectedUser.name}</Text>
-      <Button title='Close' onPress={() => props.setShowModal(false)} />
+      <TextInput style={styles.input}>{props.selectedUser.name}</TextInput>
+      <TextInput style={styles.input}>{props.selectedUser.age}</TextInput>
+      <TextInput style={styles.input}>{props.selectedUser.email}</TextInput>
+      <View style={{marginBottom:10}}><Button title='Update' /></View>
+      <View style={{}}><Button title='Close' onPress={() => props.setShowModal(false)} /></View>
     </View>
   </View>)
 }
@@ -1437,9 +1456,17 @@ const styles = StyleSheet.create({
   },
   modalView:{
     backgroundColor: '#fff',
-    padding: 60,
+    padding: 50,
     margin: 20,
     borderRadius: 10
+  },
+  input:{
+    fontSize:20,
+    borderWidth:1,
+    margin:3,
+    borderRadius:5,
+    width:250,
+    marginBottom:10
   }
 
 });
