@@ -1622,40 +1622,93 @@
 // Ref is component in react native that consists of all the properties of the component
 // We can use ref to access the properties of the component more like DOM properties in web development
 
-import React, {useRef} from 'react';
-import {View, Text, Button, StyleSheet, TextInput} from 'react-native';
+// import React, {useRef} from 'react';
+// import {View, Text, Button, StyleSheet, TextInput} from 'react-native';
+
+// const App = () => {
+//   const input = useRef<TextInput>(null);
+
+//   // The issue is that useRef(null) initializes input as null, but TypeScript doesn't know what type of reference it will hold. To fix this, you need to explicitly tell TypeScript that input is a reference to a TextInput component.
+
+//   const updateInput = () => {
+//     if (input.current) {
+//       input.current.focus();
+//       input.current.setNativeProps({style: {color: 'blue'}});
+//     }
+//   };
+
+//   return (
+//     <View style={styles.main}>
+//       <TextInput ref={input} style={styles.input} placeholder="Enter Name" />
+//       <TextInput style={styles.input} placeholder="Enter Password" />
+//       <Button title="Submit" onPress={updateInput} />
+//     </View>
+//   );
+// };
+
+// const styles = StyleSheet.create({
+//   main: {
+//     flex: 1,
+//   },
+//   input: {
+//     borderWidth: 1,
+//     margin: 5,
+//     borderColor: 'blue',
+//     fontSize: 20,
+//   },
+// });
+
+// export default App;
+
+// *******************************************************************************************
+
+// AsyncStorage in React Native - When we need to keep some data permanently into our Application we use AsyncStorage
+// It is used to store the data in the form of key value pairs
+// It is used to store the data in the form of strings
+// It is used to store the data in the form of JSON
+// For example  - a login information of a person which we want to keep permanently in our application
+// to delete the data in asynch storage - by using removeItem method of async storage
+// or by deleting the app or even by clearing the cache data of the application in the settings
+
+import React, { useState } from "react";
+import {View, Text, Button, StyleSheet} from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const App = () => {
-  const input = useRef<TextInput>(null);
 
-  // The issue is that useRef(null) initializes input as null, but TypeScript doesn't know what type of reference it will hold. To fix this, you need to explicitly tell TypeScript that input is a reference to a TextInput component.
 
-  const updateInput = () => {
-    if (input.current) {
-      input.current.focus();
-      input.current.setNativeProps({style: {color: 'blue'}});
-    }
-  };
+  const [user, setUser ] = useState('')
+  const setData = () =>{
+    AsyncStorage.setItem("name", "Abhishek");
+  }
 
-  return (
+  const getData = async () => {
+    const data = await AsyncStorage.getItem("name");
+    console.warn(data);
+    setUser(data || '');
+  }
+
+  const removeData = async() => {
+    await AsyncStorage.removeItem("name");
+    getData();
+  }
+
+  return(
     <View style={styles.main}>
-      <TextInput ref={input} style={styles.input} placeholder="Enter Name" />
-      <TextInput style={styles.input} placeholder="Enter Password" />
-      <Button title="Submit" onPress={updateInput} />
+      <Text style={{fontSize:30}}>Async Storage | {user}</Text>
+      <Button title="Set Data" onPress={setData}/>
+      <Button title="Get Data" onPress={getData}/>
+      <Button title="Remove Data" onPress={removeData}/>
     </View>
-  );
-};
+  )
+}
 
 const styles = StyleSheet.create({
-  main: {
-    flex: 1,
-  },
-  input: {
-    borderWidth: 1,
-    margin: 5,
-    borderColor: 'blue',
-    fontSize: 20,
-  },
-});
+  main:{
+    flex:1,
+    margin:5,
+    
+  }
+})
 
 export default App;
