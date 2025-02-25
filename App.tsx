@@ -1670,35 +1670,73 @@
 // to delete the data in asynch storage - by using removeItem method of async storage
 // or by deleting the app or even by clearing the cache data of the application in the settings
 
-import React, { useState } from "react";
-import {View, Text, Button, StyleSheet} from "react-native";
-import AsyncStorage from "@react-native-async-storage/async-storage";
+// import React, { useState } from "react";
+// import {View, Text, Button, StyleSheet} from "react-native";
+// import AsyncStorage from "@react-native-async-storage/async-storage";
+
+// const App = () => {
+
+
+//   const [user, setUser ] = useState('')
+//   const setData = () =>{
+//     AsyncStorage.setItem("name", "Abhishek");
+//   }
+
+//   const getData = async () => {
+//     const data = await AsyncStorage.getItem("name");
+//     console.warn(data);
+//     setUser(data || '');
+//   }
+
+//   const removeData = async() => {
+//     await AsyncStorage.removeItem("name");
+//     getData();
+//   }
+
+//   return(
+//     <View style={styles.main}>
+//       <Text style={{fontSize:30}}>Async Storage | {user}</Text>
+//       <Button title="Set Data" onPress={setData}/>
+//       <Button title="Get Data" onPress={getData}/>
+//       <Button title="Remove Data" onPress={removeData}/>
+//     </View>
+//   )
+// }
+
+// const styles = StyleSheet.create({
+//   main:{
+//     flex:1,
+//     margin:5,
+    
+//   }
+// })
+
+// export default App;
+
+
+// *******************************************************************************************
+
+// Redux - Redux is a state management library
+// It stores the data of different compoments in a single place and manages and update the data of the components
+// View -> Action -> Reducer -> Store -> View
+// View - The component which is visible to the user
+// Action - The action which is performed by the user
+// Reducer - The function which updates the data
+// Store - The place where the data is stored
+// View - The updated data is shown to the user
+
+import React from "react";
+import {View, Text, Button, StyleSheet} from "react-native"
 
 const App = () => {
-
-
-  const [user, setUser ] = useState('')
-  const setData = () =>{
-    AsyncStorage.setItem("name", "Abhishek");
-  }
-
-  const getData = async () => {
-    const data = await AsyncStorage.getItem("name");
-    console.warn(data);
-    setUser(data || '');
-  }
-
-  const removeData = async() => {
-    await AsyncStorage.removeItem("name");
-    getData();
-  }
-
   return(
     <View style={styles.main}>
-      <Text style={{fontSize:30}}>Async Storage | {user}</Text>
-      <Button title="Set Data" onPress={setData}/>
-      <Button title="Get Data" onPress={getData}/>
-      <Button title="Remove Data" onPress={removeData}/>
+      <Text style={{fontSize:30}}>REDUX</Text>
+      <Text style={{fontSize:15, color:"blue"}}>View - The component which is visible to the user</Text>
+      <Text style={{fontSize:15, color:"blue"}}>Action - The action which is performed by the user</Text>
+      <Text style={{fontSize:15, color:"blue"}}>Reducer - The function which updates the data</Text>
+      <Text style={{fontSize:15, color:"blue"}}>Store - The place where the data is stored</Text>
+      <Text style={{fontSize:15, color:"blue"}}>View - The updated data is shown to the user</Text>
     </View>
   )
 }
@@ -1706,8 +1744,8 @@ const App = () => {
 const styles = StyleSheet.create({
   main:{
     flex:1,
-    margin:5,
-    
+    justifyContent: 'center',
+    alignItems:"center"
   }
 })
 
