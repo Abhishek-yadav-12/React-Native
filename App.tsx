@@ -1507,9 +1507,7 @@
 //     if (result) {
 //       setData(result);
 //     }
-    
-    
-    
+
 //   };
 
 //   return (
@@ -1525,7 +1523,6 @@
 //         onChangeText={(text) => searchUser(text)}
 //       />
 
-      
 //       {data.length ? data.map((item:any) => <View key={item.id || item.name || item.age}><Text>
 //         {item.name}</Text></View>) : null}
 
@@ -1559,60 +1556,44 @@
 
 // Now, when you type in the search box, it will filter users locally instead of calling the API each time. 🚀
 
-
-// import React, { useState, useEffect } from 'react';
-// import { View, Text, TextInput, StyleSheet } from 'react-native';
+// import React, { useState } from 'react';
+// import { View, Text, StyleSheet, TextInput } from 'react-native';
 
 // const App = () => {
-//   const [fullData, setFullData] = useState<any[]>([]); // Store all users
-//   const [data, setData] = useState<any[]>([]); // Store filtered users
-//   const [query, setQuery] = useState<string>(""); // Track input value
+//   const [data, setData] = useState([]);
 
-//   // 🔹 Fetch all users when component mounts
-//   useEffect(() => {
-//     const fetchUsers = async () => {
-//       const url = `http://10.0.2.2:3000/users`;
-//       try {
-//         let response = await fetch(url);
-//         let result = await response.json();
-//         console.log("Fetched Data:", result);
-//         if (result) {
-//           setFullData(result); // Store the full list
-//           setData(result); // Initially show all users
-//         }
-//       } catch (error) {
-//         console.error("Error fetching data:", error);
-//       }
-//     };
-//     fetchUsers();
-//   }, []);
+//   const searchUser = async (text: string) => {
+//     const url = `http://10.0.2.2:3000/users`; // Fetch all users
+//     let response = await fetch(url);
+//     let result = await response.json();
 
-//   // 🔹 Filter users locally when query changes
-//   useEffect(() => {
-//     if (query.trim() === "") {
-//       setData(fullData); // Reset to full list if search is empty
-//     } else {
-//       const filtered = fullData.filter((item) =>
-//         item.name?.toLowerCase().includes(query.toLowerCase())
+//     if (result) {
+//       const filteredData = result.filter((item: any) =>
+//         item.name.toLowerCase().includes(text.toLowerCase()) ||
+//         item.age.toString().includes(text) ||
+//         item.email.toLowerCase().includes(text.toLowerCase())
 //       );
-//       console.log("Filtered Data:", filtered);
-//       setData(filtered);
+
+//       setData(filteredData);
 //     }
-//   }, [query, fullData]);
+//   };
 
 //   return (
 //     <View style={styles.main}>
 //       <TextInput
 //         style={styles.input}
-//         placeholder="Search"
-//         value={query}
-//         onChangeText={(text) => setQuery(text)}
+//         placeholder="Search by name, age, or email"
+//         onChangeText={(text) => searchUser(text)}
 //       />
 
 //       {data.length ? (
-//         data.map((item) => (
-//           <View key={item.id || item.name}>
-//             <Text>{item.name}</Text>
+//         data.map((item: any) => (
+//           <View key={item.id || item.email}
+//           style={{ flexDirection:"row", justifyContent:"space-between", padding:10, borderBottomWidth:1, borderBottomColor:"grey"}}>
+//             <Text style={{fontSize:18, color:"blue"}}>{item.name}</Text>
+//             <Text style={{fontSize:18, color:"blue"}}>{item.age}</Text>
+//             <Text style={{fontSize:18, color:"blue"}}>{item.email}</Text>
+
 //           </View>
 //         ))
 //       ) : (
@@ -1625,12 +1606,56 @@
 // const styles = StyleSheet.create({
 //   main: { flex: 1, padding: 10 },
 //   input: {
-//     fontSize: 20,
+//     fontSize: 18,
 //     borderColor: 'skyblue',
 //     borderWidth: 1,
-//     margin: 5,
-//     padding: 8,
+//     marginBottom: 10,
+//     padding: 5,
 //   },
 // });
 
 // export default App;
+
+// *******************************************************************************************
+
+// Ref in React Native
+// Ref is component in react native that consists of all the properties of the component
+// We can use ref to access the properties of the component more like DOM properties in web development
+
+import React, {useRef} from 'react';
+import {View, Text, Button, StyleSheet, TextInput} from 'react-native';
+
+const App = () => {
+  const input = useRef<TextInput>(null);
+
+  // The issue is that useRef(null) initializes input as null, but TypeScript doesn't know what type of reference it will hold. To fix this, you need to explicitly tell TypeScript that input is a reference to a TextInput component.
+
+  const updateInput = () => {
+    if (input.current) {
+      input.current.focus();
+      input.current.setNativeProps({style: {color: 'blue'}});
+    }
+  };
+
+  return (
+    <View style={styles.main}>
+      <TextInput ref={input} style={styles.input} placeholder="Enter Name" />
+      <TextInput style={styles.input} placeholder="Enter Password" />
+      <Button title="Submit" onPress={updateInput} />
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  main: {
+    flex: 1,
+  },
+  input: {
+    borderWidth: 1,
+    margin: 5,
+    borderColor: 'blue',
+    fontSize: 20,
+  },
+});
+
+export default App;
