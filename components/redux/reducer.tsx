@@ -1,12 +1,19 @@
-import { ADD_TO_CART } from "./constants";
+import {ADD_TO_CART, REMOVE_FROM_CART} from './constants';
 
 const initialState: any[] = [];
 
 export const reducer = (state = initialState, action: any) => {
-    switch (action.type) {
-        case ADD_TO_CART:
-            return [...state, action.data];
-        default:
-            return state; 
-    }
+  switch (action.type) {
+    case ADD_TO_CART:
+      return [...state, action.data];
+
+    case REMOVE_FROM_CART:
+        let result = state.filter(item => {
+            return item.name !== action.data});
+      return [...result];
+
+
+    default:
+      return state;
+  }
 };
