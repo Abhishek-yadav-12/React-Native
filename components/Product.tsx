@@ -7,7 +7,6 @@ const Products = (props: any) => {
   const dispatch = useDispatch();
   const item = props.item;
   const handleAddToCart = (item: any) => {
-    console.warn('Called!!', item);
     dispatch(addToCart(item));
   };
   return (
@@ -17,6 +16,8 @@ const Products = (props: any) => {
         borderBottomColor: 'orange',
         borderBottomWidth: 4,
         padding: 10,
+        margin:50,
+        marginTop:15
       }}>
       <Text>{item.name}</Text>
       <Text>{item.color}</Text>
