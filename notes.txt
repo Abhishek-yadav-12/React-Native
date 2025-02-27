@@ -65,3 +65,8 @@ export default App;
 
 
 Any framework of JS cannot directly connect to the database, so we integrate the API to connect the database
+
+Redux Installation - 
+npm i redux
+npm i react-redux
+npm i @reduxjs/toolkit

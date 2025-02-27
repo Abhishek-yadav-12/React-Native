@@ -774,7 +774,7 @@
 //       <Button title="Loader" onPress={showLoader}/>
 //     </View>
 //   )
-// }                     // In android we can adjust the size of the loader by using numbers and as well as small, medium and large but in ios we only use words and not numbers.
+// }       // In android we can adjust the size of the loader by using numbers and as well as small, medium and large but in ios we only use words and not numbers.
 
 // export default App;
 
@@ -794,7 +794,6 @@
 //     //   transparent={true}
 //     //   visible={show}
 //     //   animationType="fade" // or slide
-
 //     //   >
 //     //     <View style={styles.centerView}>
 //     //       <View style={styles.modalView}>
@@ -952,7 +951,7 @@
 //   return(
 //     <View style={styles.main}>
 //       <WebView
-//       source={{uri: "https://github.com/Abhishek-yadav-12"}}
+//       source={{uri: "https://portfolio-pi-ochre-76.vercel.app/"}}
 //       />
 //     </View>
 //   )
@@ -1724,18 +1723,41 @@
 // Store - The place where the data is stored
 // View - The updated data is shown to the user
 
+// import React from "react";
+// import {View, Text, Button, StyleSheet} from "react-native"
+
+// const App = () => {
+//   return(
+//     <View style={styles.main}>
+//       <Text style={{fontSize:30}}>REDUX</Text>
+//       <Text style={{fontSize:15, color:"blue"}}>View - The component which is visible to the user</Text>
+//       <Text style={{fontSize:15, color:"blue"}}>Action - The action which is performed by the user</Text>
+//       <Text style={{fontSize:15, color:"blue"}}>Reducer - The function which updates the data</Text>
+//       <Text style={{fontSize:15, color:"blue"}}>Store - The place where the data is stored</Text>
+//       <Text style={{fontSize:15, color:"blue"}}>View - The updated data is shown to the user</Text>
+//     </View>
+//   )
+// }
+
+// const styles = StyleSheet.create({
+//   main:{
+//     flex:1,
+//     justifyContent: 'center',
+//     alignItems:"center"
+//   }
+// })
+
+// export default App;
+
+// *******************************************************************************************
+
 import React from "react";
 import {View, Text, Button, StyleSheet} from "react-native"
 
 const App = () => {
   return(
     <View style={styles.main}>
-      <Text style={{fontSize:30}}>REDUX</Text>
-      <Text style={{fontSize:15, color:"blue"}}>View - The component which is visible to the user</Text>
-      <Text style={{fontSize:15, color:"blue"}}>Action - The action which is performed by the user</Text>
-      <Text style={{fontSize:15, color:"blue"}}>Reducer - The function which updates the data</Text>
-      <Text style={{fontSize:15, color:"blue"}}>Store - The place where the data is stored</Text>
-      <Text style={{fontSize:15, color:"blue"}}>View - The updated data is shown to the user</Text>
+        <Text style={{fontSize:30}}>REDUX</Text>
     </View>
   )
 }
@@ -1743,9 +1765,7 @@ const App = () => {
 const styles = StyleSheet.create({
   main:{
     flex:1,
-    justifyContent: 'center',
-    alignItems:"center"
   }
 })
 
-export default App;
+export default App; 
