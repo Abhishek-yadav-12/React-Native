@@ -1802,7 +1802,7 @@ const App = () => {
     <View style={styles.main}>
       <Header />
       <ScrollView>
-      {Products.map(item => <Product item={item} />
+      {Products.map(item => <Product key={item.id} item={item} />
      
       )}
       </ScrollView>
@@ -1816,3 +1816,9 @@ const styles = StyleSheet.create({
 });
 
 export default App;
+
+// Redux Action - It is a function which returns an object
+// Redux Reducer - It is a function which takes the state and action as an argument and returns the new state
+// Redux Store - It is a place where the data is stored
+// Redux Dispatch - It is a function which is used to call the action
+// Redux Provider - It is a component which is used to provide the store to the application
