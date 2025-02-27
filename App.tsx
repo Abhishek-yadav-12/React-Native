@@ -1817,7 +1817,7 @@ const styles = StyleSheet.create({
 
 export default App;
 
-// Redux Action - It is a function which returns an object
+// Redux Action - It is a function which returns an object. It'll tell what to do actually
 // Redux Reducer - It is a function which takes the state and action as an argument and returns the new state
 // Redux Store - It is a place where the data is stored
 // Redux Dispatch - It is a function which is used to call the action
