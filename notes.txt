@@ -70,3 +70,6 @@ Redux Installation -
 npm i redux
 npm i react-redux
 npm i @reduxjs/toolkit
+
+
+I need to learn and understand the basics of redux data flow all over the components
