@@ -73,3 +73,16 @@ npm i @reduxjs/toolkit
 
 
 I need to learn and understand the basics of redux data flow all over the components
+
+
+Redux is a state management storage kind of container that stores the value of different states and updates it according to users operations.
+
+Redux Architecture - 
+View -> Actions -> Reducer -> Store -> View
+
+In Redux architecture, when a user interacts with the View (components), an Action is dispatched. This action is a plain object that describes what happened, usually with a type and optional payload. The Store sends this action to a Reducer, which is a pure function that takes the current state and the action to create a new updated state. The Store then saves this new state, and any components subscribed to the store automatically get the latest data and re-render if needed. This clear, one-way data flow keeps state management simple and predictable.
+
+Payload = extra data the reducer might need to update the state.
+Optional = if no extra data is needed, you can leave it out.
+
+Saga is a middleware used in Redux to handle asynchronous operations, such as API calls, in a more organized way. It helps manage complex async tasks like fetching data from servers, delays, or background tasks by using generator functions.
