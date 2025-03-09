@@ -86,3 +86,4 @@ Payload = extra data the reducer might need to update the state.
 Optional = if no extra data is needed, you can leave it out.
 
 Saga is a middleware used in Redux to handle asynchronous operations, such as API calls, in a more organized way. It helps manage complex async tasks like fetching data from servers, delays, or background tasks by using generator functions.
+
